@@ -20,7 +20,11 @@
  *         work.php  -> public/pages/work.html      (and so on)
  *     vercel.json rewrites `/work.php` -> `/pages/work.html`, so every
  *     existing URL keeps working exactly as before.
- *  3. Password-protected pages (the ones reading PORTFOLIO_PASSWORD) are
+ *  3. `index.php` is the home page, so its HTML is *also* written to
+ *     `public/index.html`: the bare domain (`/`, and `/index.html`) serves the
+ *     portfolio, exactly like the `DirectoryIndex index.php` of the old PHP
+ *     host did. The legacy 2009 homepage keeps living at `/home.html`.
+ *  4. Password-protected pages (the ones reading PORTFOLIO_PASSWORD) are
  *     encrypted with AES-256-GCM and wrapped in a small unlock page. The
  *     plaintext never reaches the deployed site and the password itself is
  *     never stored anywhere - it only derives the key. Visitors unlock the
@@ -67,7 +71,7 @@ const EXCLUDE_PATHS = new Set([
 
 /** Junk / dev files dropped anywhere in the tree. */
 const EXCLUDE_FILE =
-  /^(\.DS_Store|Thumbs\.db|desktop\.ini|web\.config|\.user\.ini|\.env(\..*)?|\.gitignore|\.vercelignore|package(-lock)?\.json|vercel\.json|.*\.md)$/i;
+  /^(\.DS_Store|Thumbs\.db|desktop\.ini|web\.config|\.htaccess|\.htpasswd|\.user\.ini|\.env(\..*)?|\.gitignore|\.vercelignore|package(-lock)?\.json|vercel\.json|.*\.md)$/i;
 const EXCLUDE_EXT = /\.(map|log)$/i;
 
 const NEVER_COPY_DIRS = new Set(['node_modules', '.git', '.vercel']);
@@ -92,7 +96,7 @@ const PUBLIC_WORK = /^(1|true|yes)$/i.test((process.env.PORTFOLIO_PUBLIC_WORK ||
 // ---------------------------------------------------------------------------
 // helpers
 // ---------------------------------------------------------------------------
-const stats = { files: 0, bytes: 0 };
+const stats = { files: 0, copied: 0, bytes: 0 };
 const shouldSkipFile = (name) => EXCLUDE_FILE.test(name) || EXCLUDE_EXT.test(name);
 
 /** Recursively copies a folder, skipping dev/archive noise. */
@@ -109,6 +113,7 @@ function copyTree(from, to) {
     if (!entry.isFile() || shouldSkipFile(entry.name)) continue;
     fs.copyFileSync(src, dest);
     stats.files += 1;
+    stats.copied += 1;
     stats.bytes += fs.statSync(dest).size;
   }
 }
@@ -313,7 +318,7 @@ const notFoundPage = `<!DOCTYPE html>
     <img src="/img/anil-sutar-logo.png" alt="Anil Sutar" onerror="this.style.display='none'">
     <h1>This page does not exist</h1>
     <p>The link may be out of date, or the page may have moved.</p>
-    <a href="/">Home</a> &middot; <a href="/index.php">Portfolio</a> &middot; <a href="/work.php">Work</a>
+    <a href="/">Home</a> &middot; <a href="/work.php">Work</a> &middot; <a href="/home.html">Legacy site</a>
   </main>
 </body>
 </html>
@@ -348,6 +353,7 @@ for (const entry of fs.readdirSync(ROOT, { withFileTypes: true })) {
   const dest = path.join(OUT, entry.name);
   fs.copyFileSync(src, dest);
   stats.files += 1;
+  stats.copied += 1;
   stats.bytes += fs.statSync(dest).size;
 }
 
@@ -357,20 +363,30 @@ const publicModePages = [];
 for (const name of phpPages) {
   const source = fs.readFileSync(path.join(ROOT, name), 'utf8');
   const html = renderPhpPage(source, name);
-  const isGated = isGatedPage(source);
+  const gated = isGatedPage(source) && !PUBLIC_WORK;
   const outName = `pages/${name.replace(/\.php$/i, '.html')}`;
 
-  if (isGated && !PUBLIC_WORK) {
+  let output;
+  if (gated) {
     const notice = PASSWORD
       ? ''
       : 'No password is configured for this deployment yet. Add the <code>PORTFOLIO_PASSWORD</code> ' +
         'environment variable to this project on Vercel (or to <code>.env</code> locally) and deploy ' +
         'again to unlock this case study.';
-    writeOut(outName, unlockPage('Protected case study', PASSWORD ? encryptHtml(html, PASSWORD) : { v: 1, locked: true }, notice));
+    output = unlockPage('Protected case study', PASSWORD ? encryptHtml(html, PASSWORD) : { v: 1, locked: true }, notice);
     gatedPages.push(name);
   } else {
-    writeOut(outName, html);
+    output = html;
     publicModePages.push(name);
+  }
+
+  writeOut(outName, output);
+
+  // index.php is the home page: serve the very same HTML from the site root,
+  // so `/` and `/index.html` show it too (PHP hosts do this automatically via
+  // `DirectoryIndex index.php`, which static hosting has no equivalent for).
+  if (/^index\.php$/i.test(name)) {
+    writeOut('index.html', output);
   }
 }
 
@@ -379,7 +395,8 @@ writeOut('404.html', notFoundPage);
 
 // 4. summary
 const mb = (n) => (n / 1024 / 1024).toFixed(1) + ' MB';
-console.log(`[build] copied ${stats.files - phpPages.length - 1} static files`);
+console.log(`[build] copied ${stats.copied} static files`);
+console.log('[build] homepage:  /  →  public/index.html   (rendered from index.php)');
 console.log(`[build] rendered ${phpPages.length} PHP pages into public/pages/:`);
 for (const name of phpPages) {
   const label = gatedPages.includes(name)

@@ -159,5 +159,5 @@ server.listen(PORT, '0.0.0.0', () => {
   }
   console.log(`\n[dev] serving public/ on port ${PORT}`);
   for (const address of addresses) console.log(`      ${address}`);
-  console.log('      /  ·  /index.php  ·  /work.php  ·  /about_me.html\n');
+  console.log('      /  ·  /index.php  ·  /work.php  ·  /home.html\n');
 });

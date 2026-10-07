@@ -7,6 +7,9 @@
   <meta name="Description" content="Anil Sutar" />
   <meta name="keywords" content="Anil Sutar" />
 
+  <!-- index.php is the home page; /, /index.html and /index.php all serve it -->
+  <link rel="canonical" href="https://anilsutar.com/" />
+
 
   <link href="favicon.ico" rel="icon" type="image/x-icon" />
 

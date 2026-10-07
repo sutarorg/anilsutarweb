@@ -69,8 +69,10 @@ Vercel does not run PHP. `scripts/build-vercel.mjs` renders each top-level
 existing URL working:
 
 ```
-/                  →  public/index.html        (the legacy homepage, as today)
-/index.php         →  public/pages/index.html  (modern portfolio)
+/                  →  public/index.html        (home page — rendered from index.php)
+/index.php         →  public/pages/index.html  (the same home page, old URL kept)
+/index.html        →  public/index.html        (the same home page)
+/home.html         →  public/home.html         (legacy 2009 homepage + archive nav)
 /about_me.html     →  public/about_me.html     (1:1 static copy)
 /anything-else     →  public/...               (1:1 static copy)
 ```
@@ -114,6 +116,27 @@ the password gate: open http://localhost:3000/work.php.
 
 ---
 
+## The home page
+
+`index.php` is the home page of the site — the modern portfolio.
+
+* **On Vercel (static):** the build renders `index.php` and writes the result to
+  `public/index.html`, so `/`, `/index.html` and `/index.php` all show it. This
+  is the static stand-in for `DirectoryIndex index.php`, which static hosting
+  has no equivalent for.
+* **On the PHP host:** `web.config` (IIS) and `.htaccess` (Apache) list
+  `index.php` first as the default document, so a request for `/` is served by
+  `index.php`.
+* **The legacy 2009 homepage** is still there, at `/home.html`; the old pages
+  under it (`about_me.html`, `websites.html`, `graphic_design.html`,
+  `2d_animation.html`, `interest.html`, `contact.html`, the `sample_*.html` and
+  `painting*.html` galleries) link back to it from their HOME links.
+
+So there is exactly one home page — `index.php` — and the old homepage and its
+archive stay reachable without any redirects in between. `index.php` carries a
+`rel="canonical"` pointing at `https://anilsutar.com/` so the three equivalent
+addresses (`/`, `/index.html`, `/index.php`) do not compete in search results.
+
 ## Repository notes
 
 * **Included in the deployment:** everything at the top level, plus `css/`,
@@ -123,8 +146,8 @@ the password gate: open http://localhost:3000/work.php.
 * **Excluded from the deployment** (still in Git, just not uploaded):
   `old-portfolio/` (an archived copy of an earlier site generation, linked only
   as an absolute URL to the old host), `test/` (leftover server-language
-  probes), source maps, `Thumbs.db`, `web.config`, `.user.ini`, and the build
-  tooling. Change `EXCLUDE_PATHS` in `scripts/build-vercel.mjs` (and
+  probes), source maps, `Thumbs.db`, `web.config`, `.htaccess`, `.user.ini`, and
+  the build tooling. Change `EXCLUDE_PATHS` in `scripts/build-vercel.mjs` (and
   `.vercelignore`) if you want any of them online.
 * **Static upload size:** ~70 MB, within Vercel's 100 MB limit for the Hobby
   plan. If you later add large media, keep an eye on it.
