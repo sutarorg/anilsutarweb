@@ -2,25 +2,18 @@
  * Turns the site's `.php` pages into the plain HTML a logged-in visitor would
  * have received from the old PHP host, without running PHP.
  *
- * Every page in this repository shares one uniform template:
+ * The legacy protected case-study pages share a common template: a leading
+ * session/password prologue, followed by the unlocked page and a password form
+ * in the `else` branch. This helper strips the PHP scaffolding and fallback
+ * form so the static build can wrap protected content separately.
  *
- *   <?php
- *   session_start();
- *   $match = getenv('PORTFOLIO_PASSWORD');
- *   ... POST handling ...
- *   ?>                                     <- scaffolding (dropped)
- *   <?php if ($_SESSION['password'] == $match) { ?>
- *     ... the actual page ...              <- kept
- *   <?php } else { ?>
- *     ... the password prompt ...          <- dropped
- *   <?php } ?>
+ * Plain HTML pages that happen to use a `.php` URL (for example, the work page
+ * and the login page) pass through unchanged. Some legacy pages close their
+ * gate condition inside the prologue block, so the renderer strips leading PHP
+ * blocks and cuts the document at the `} else {` marker.
  *
- * Some pages close the gate condition inside the prologue block instead of a
- * separate block, so the renderer simply strips *every* leading PHP block,
- * keeps what follows, and cuts the document at the `} else {` marker.
- *
- * `npm run verify:render` compares this output against real PHP (php-wasm) to
- * prove the transform is faithful.
+ * `npm run verify:render` compares rendered output against real PHP
+ * (php-wasm) for the legacy page templates.
  */
 
 const PHP_BLOCK = /<\?(?:php|=)?[\s\S]*?\?>/;

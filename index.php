@@ -196,14 +196,14 @@ I'm constantly exploring <strong>AI tools</strong>,
       </div>
       <div class="col-md-12 col-lg-12 col-12 py-2">
         <h2 class="sfprosb">Let's connect!</h2>
-        <p class="sfprolit blkfs18"><a href="mailto:anilsutar@gmail.com">anilsutar@gmail.com</a></p>
+        <p class="sfprolit blkfs18"><a href="mailto:anilrsutar@gmail.com">anilrsutar@gmail.com</a></p>
       </div>
       <div class="col-md-7 col-lg-7 col-12 pt-5">
         <h2 class="sfprosb">More About Me</h2>
         <p class="sfprolit blkfs18">I love Painting, Making thermocole articles, fitness, And love trying new things. </p>
       </div>
       <div class="col-md-5 col-lg-5 col-12 pt-0 pt-lg-5 text-center">
-        <p class="sfprolit blkfs18 mt-4"><a href="https://anilsutar.com/old-portfolio/" target="blank"><u>Older Website</u></a></p>
+        <p class="sfprolit blkfs18 mt-4"><a href="/old-portfolio/"><u>Older Website</u></a></p>
       </div>
       <div class="col-md-12 col-lg-12 col-12 pt-0 pt-lg-5">
         <div class="hr-sect w-100 w-lg-50 sfprolit mx-auto small"><i>Paintings drawan by me</i></div>

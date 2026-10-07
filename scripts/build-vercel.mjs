@@ -13,9 +13,11 @@
  * What it does
  * ------------
  *  1. Copies every static asset/page of the repository into `public/` 1:1,
- *     skipping dev-only and archive folders (see EXCLUDE_PATHS below).
- *  2. Renders the top-level `*.php` pages (which only contain trivial PHP:
- *     a session/password prologue plus an if/else) into plain HTML:
+ *     skipping dev-only folders (see EXCLUDE_PATHS below).
+ *  2. Renders the top-level `*.php` pages into plain HTML. Pages with legacy
+ *     PHP conditionals are converted by the small renderer; plain HTML pages
+ *     using a `.php` URL (such as the frontend-gated work page and login page)
+ *     are copied through unchanged:
  *         index.php -> public/pages/index.html
  *         work.php  -> public/pages/work.html      (and so on)
  *     vercel.json rewrites `/work.php` -> `/pages/work.html`, so every
@@ -65,7 +67,6 @@ const EXCLUDE_PATHS = new Set([
   'node_modules',
   'public',
   'scripts', // build tooling, not site content
-  'old-portfolio', // archived copy of an earlier site (duplicated assets, ~16 MB)
   'test', // leftover server-side language probes, never linked from the site
 ]);
 
@@ -74,7 +75,7 @@ const EXCLUDE_FILE =
   /^(\.DS_Store|Thumbs\.db|desktop\.ini|web\.config|\.htaccess|\.htpasswd|\.user\.ini|\.env(\..*)?|\.gitignore|\.vercelignore|package(-lock)?\.json|vercel\.json|.*\.md)$/i;
 const EXCLUDE_EXT = /\.(map|log)$/i;
 
-const NEVER_COPY_DIRS = new Set(['node_modules', '.git', '.vercel']);
+const NEVER_COPY_DIRS = new Set(['node_modules', '.git', '.vercel', 'test']);
 
 // ---------------------------------------------------------------------------
 // tiny env loader (.env / .env.local) - real environment always wins

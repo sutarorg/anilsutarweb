@@ -10,8 +10,7 @@ node_modules
 # Generated at build time on Vercel - never upload a local copy
 public
 
-# Archives that are not part of the deployed site
-old-portfolio
+# Leftover server-language probes, not part of the deployed site
 test
 
 # Dev-only leftovers and secrets

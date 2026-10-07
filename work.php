@@ -1,34 +1,26 @@
-<?php
-session_start();
-$match = getenv('PORTFOLIO_PASSWORD');
-
-if(isset($_POST['submit_pass']) && $_POST['pass'])
-{
- $pass=$_POST['pass'];
- if($pass==$match)
- {
-  $_SESSION['password']=$pass;
- }
- else
- {
-  $error="Incorrect Pssword";
- }
-}
-
-if(isset($_POST['page_logout']))
-{
- unset($_SESSION['password']);
-}
-?>
-<?php
-if($_SESSION['password']==$match)
-{
- ?>
- <html>
+<!DOCTYPE html>
+<html lang="en" class="work-auth-pending">
 <head>
-  <title>Anil Sutar</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script>
+    (function () {
+      var accessKey = 'anilsutar.workAccess';
+      try {
+        if (window.sessionStorage.getItem(accessKey) === 'granted') {
+          document.documentElement.classList.remove('work-auth-pending');
+          return;
+        }
+      } catch (error) {
+        // If browser storage is unavailable, keep the page locked and send the visitor to sign in.
+      }
+      window.location.replace('/login.php');
+    }());
+  </script>
+  <style>
+    html.work-auth-pending body { visibility: hidden; }
+  </style>
+  <title>Anil Sutar</title>
   <meta name="revisit-after" content="7 days" />
   <meta name="Description" content="Anil Sutar" />
   <meta name="keywords" content="Anil Sutar" />
@@ -235,59 +227,3 @@ onkeydown="if ((arguments[0] || window.event).ctrlKey) return false">
 </script>
 </body>
 </html>
- <?php
-}
-else
-{
- ?>
- <html>
-<head>
-  <title>Anil Sutar</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="revisit-after" content="7 days" />
-  <meta name="Description" content="Anil Sutar" />
-  <meta name="keywords" content="Anil Sutar" />
-
-
-  <link href="favicon.ico" rel="icon" type="image/x-icon" />
-
-  <link rel="stylesheet" href="css/bootstrap.min.css">
-  <link rel="stylesheet" href="css/font-awesome.min.css">
-  <link href="css/aos.css" rel="stylesheet">
-  <link href="css/extra.css" rel="stylesheet">
-  <link href="css/text.css" rel="stylesheet">
-
-</head>
-
-<body style="overflow-x:hidden;">
-<div class="row m-0 p-0 p-lg-4">
-  <div class="container">
-    <div class="row mb-5 pb-5">
-      <div class="col-md-5 col-lg-5 col-12 mb-4 mx-auto mt-lg-5 pt-lg-5">
-          <div class="password border rounded mt-5 p-4">
-            <h1 class="sfprohev blkfs18 mb-3 blgrehd">Enter Password</h1>
-            <form method="post" action="" id="login_form">
-              <div class="form-group">
-                <input type="password" class="form-control sfprolit" name="pass" placeholder="Enter Password">
-              </div>
-              <div class="row">
-                <div class="col-md-6 col-lg-6 col-6 pt-2">
-                  <a href="index.php" class="sfprolit small"> < Go Home</a>
-                </div>
-                <div class="col-md-6 col-lg-6 col-6 text-right">
-				  <input type="submit" name="submit_pass" class="btn btn-primary border-0 sfprohev whicol rounded px-4" style="background-color: #6678a1;" value="OK">
-                </div>
-              </div>
-            </form>
-          </div>
-        </a>
-      </div>
-    </div>
-  </div>
-</div>
-</body>
-</html>
- <?php	
-}
-?>
