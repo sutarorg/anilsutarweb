@@ -1,0 +1,231 @@
+html,
+body {
+  min-height: 100%;
+}
+
+.login-body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  color: #1c2b4b;
+  background:
+    radial-gradient(ellipse at 50% 32%, rgba(102, 120, 161, 0.08), transparent 43%),
+    #f7f8fa;
+  font-family: SFProText-Regular, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.login-header {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.94);
+  border-bottom: 1px solid #eceef2;
+}
+
+.login-nav {
+  min-height: 96px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.login-brand {
+  display: inline-flex;
+  align-items: center;
+  line-height: 0;
+}
+
+.login-brand img {
+  display: block;
+  width: auto;
+  max-width: 193px;
+  height: 80px;
+  object-fit: contain;
+}
+
+.login-home-link {
+  padding: 10px 4px 10px 16px;
+  color: #76798d;
+  font-size: 16px;
+  text-decoration: none;
+  transition: color 160ms ease;
+}
+
+.login-home-link:hover,
+.login-home-link:focus {
+  color: #1c2b4b;
+  text-decoration: none;
+}
+
+.login-main {
+  flex: 1;
+  display: grid;
+  place-items: center;
+  padding: 54px 20px 72px;
+}
+
+.login-card {
+  width: min(100%, 456px);
+  padding: 42px 44px 34px;
+  border: 1px solid #e8ebf0;
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: 0 20px 55px rgba(28, 43, 75, 0.09);
+  text-align: center;
+}
+
+.login-icon {
+  display: grid;
+  width: 48px;
+  height: 48px;
+  margin: 0 auto 20px;
+  place-items: center;
+  border-radius: 50%;
+  color: #6678a1;
+  background: #eef1f7;
+  font-size: 19px;
+}
+
+.login-eyebrow {
+  margin: 0 0 9px;
+  color: #6678a1;
+  font-size: 12px;
+  letter-spacing: 0.11em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.login-title {
+  margin: 0;
+  color: #1c2b4b;
+  font-size: clamp(25px, 5vw, 30px);
+  line-height: 1.2;
+}
+
+.login-intro {
+  max-width: 320px;
+  margin: 12px auto 28px;
+  color: #6b7280;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.login-form {
+  text-align: left;
+}
+
+.login-field {
+  margin-bottom: 18px;
+}
+
+.login-field label {
+  display: block;
+  margin: 0 0 7px;
+  color: #343d50;
+  font-size: 13px;
+}
+
+.login-field input {
+  display: block;
+  width: 100%;
+  min-height: 50px;
+  padding: 12px 14px;
+  border: 1px solid #d9dee7;
+  border-radius: 8px;
+  outline: none;
+  color: #1c2b4b;
+  background: #fff;
+  font-size: 15px;
+  transition: border-color 160ms ease, box-shadow 160ms ease;
+}
+
+.login-field input::placeholder {
+  color: #9aa1af;
+}
+
+.login-field input:focus {
+  border-color: #6678a1;
+  box-shadow: 0 0 0 3px rgba(102, 120, 161, 0.16);
+}
+
+.login-feedback {
+  min-height: 20px;
+  margin: -2px 0 12px;
+  color: #a52a2a;
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.login-feedback:empty {
+  min-height: 8px;
+  margin-bottom: 12px;
+}
+
+.login-submit {
+  display: flex;
+  width: 100%;
+  min-height: 50px;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  border: 0;
+  border-radius: 8px;
+  color: #fff;
+  background: #6678a1;
+  cursor: pointer;
+  font-size: 15px;
+  transition: background-color 160ms ease, transform 160ms ease;
+}
+
+.login-submit:hover:not(:disabled),
+.login-submit:focus-visible {
+  background: #53668f;
+}
+
+.login-submit:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+.login-submit:disabled {
+  cursor: wait;
+  opacity: 0.75;
+}
+
+.login-submit:focus-visible,
+.login-home-link:focus-visible,
+.login-back:focus-visible {
+  outline: 3px solid rgba(102, 120, 161, 0.35);
+  outline-offset: 3px;
+}
+
+.login-back {
+  display: inline-block;
+  margin-top: 24px;
+  color: #6678a1;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.login-back:hover,
+.login-back:focus {
+  color: #1c2b4b;
+  text-decoration: underline;
+}
+
+@media (max-width: 575.98px) {
+  .login-nav {
+    min-height: 82px;
+  }
+
+  .login-brand img {
+    height: 68px;
+    max-width: 164px;
+  }
+
+  .login-main {
+    padding: 36px 16px 48px;
+  }
+
+  .login-card {
+    padding: 34px 24px 28px;
+    border-radius: 14px;
+  }
+}
