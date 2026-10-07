@@ -1,0 +1,6 @@
+# Apache equivalent of the IIS setting in web.config:
+# index.php is the home page, so a request for "/" is served by index.php.
+#
+# Not needed on IIS (which reads web.config) - drop this file if the host is
+# not Apache, or if the Apache configuration does not allow .htaccess overrides.
+DirectoryIndex index.php index.html
