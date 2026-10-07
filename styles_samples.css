@@ -1,0 +1,217 @@
+@charset "utf-8";
+/* CSS Document */
+
+body {
+	margin:0px;
+	background:#FFFFFF;
+}
+.clear{clear:both;}
+.clear-1{clear:both; font-size:1px;}
+#main{
+	margin:auto;
+	position:relative;
+}
+#header{
+    width:100%px;
+    margin:auto;
+	padding:0px;
+	height:30px;
+	background:#ffdc38;
+}
+a{
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-size:11px;
+	color:#cb510e;
+	text-decoration:none;
+}
+a:hover{
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-size:11px;
+	color:#cb510e;
+	text-decoration:underline;
+}
+.image{
+    margin:auto;
+	height:30px;
+	text-align:center;
+}
+.navigation{
+   width:880px;
+   height:23px;
+   margin:auto;
+}
+
+.leftpart{
+   width:670px;
+   height:21px;
+   float:left;
+   text-align:left;
+   margin:0px;
+   padding:0px;
+   font-family:Verdana, Arial, Helvetica, sans-serif;
+
+}
+.rightpart{
+   width:210px;
+   height:21px;
+   float:right;
+   margin:0px;
+   padding:0px;
+   font-family:Verdana, Arial, Helvetica, sans-serif;
+}   
+
+.leftButton{
+   width:63px;
+   height:20px;
+   float:left;
+   text-align:left;
+   margin:0px;
+   padding:3px 0 0 20px;
+   background:url(images/btn_back.gif) left no-repeat;
+   font-family:Verdana, Arial, Helvetica, sans-serif;
+
+}
+.leftButton a{
+   color:#FFFFFF;
+   font-weight:bold;
+   text-decoration:none;
+   font-size:11px;
+}
+.leftButton a:hover{
+   color:#FFFFFF;
+   font-weight:bold;
+   text-decoration:underline;
+   font-size:11px;
+}
+.rightButton{
+   width:97px;
+   height:20px;
+   float:right;
+   text-align:right;
+   margin:0px;
+   padding:3px 30px 0 0px;
+   background:url(images/btn_next.gif) right  no-repeat;
+   font-family:Verdana, Arial, Helvetica, sans-serif;
+}   
+.rightButton a{
+   color:#FFFFFF;
+   font-weight:bold;
+   text-decoration:none;
+   font-size:11px;
+   font:Arial, Helvetica, sans-serif;
+}
+.rightButton a:hover{
+   color:#FFFFFF;
+   font-weight:bold;
+   text-decoration:underline;
+   font-size:11px;
+}
+
+.screenshotlinks{
+	margin:auto;
+	height:30px;
+	clear:both;
+	font-weight:bold;
+}
+.screenshotlinks  ul{margin:0px; padding:7px 0 0 0px;}
+.screenshotlinks  li{
+background:url(images/bullet_orange2.gif) left top no-repeat; float:left; list-style-type:none; margin:0px 0px 2px 0px; padding:0px 25px 0 9px;}
+.screenshotlinks li a{
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-size:11px;
+	color:#cb510e;
+	text-decoration:none;
+}
+.screenshotlinks li a:hover{
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-size:11px;
+	color:#cb510e;
+	text-decoration:underline;
+}
+.main_image{
+    width:100%;
+    margin:auto;
+    padding:0px;
+	clear:both;
+	text-align:center;
+}
+.bg_logo{
+    width:100%;
+    margin:auto;
+    padding:0px;
+	clear:both;
+	text-align:center;
+	color:#d9e0e1;
+}
+#footer{
+    width:1024px;
+    margin:auto;
+	padding:0px;
+	height:23px;
+	background:#ffdc38;
+	padding-top:7px;
+}
+.leftButton2{
+   width:53px;
+   height:19px;
+   float:left;
+   text-align:left;
+   margin:0px;
+   padding:4px 0 0 30px;
+   background:url(images/btn_back2.gif) left no-repeat;
+   font-family:Verdana, Arial, Helvetica, sans-serif;
+
+}
+.leftButton2 a{
+   color:#FFFFFF;
+   font-weight:bold;
+   text-decoration:none;
+   font-size:11px;
+}
+.leftButton2 a:hover{
+   color:#FFFFFF;
+   font-weight:bold;
+   text-decoration:underline;
+   font-size:11px;
+}
+.rightButton2{
+   width:587px;
+   height:19px;
+   float:right;
+   text-align:right;
+   margin:0px;
+   padding:4px 30px 0 0px;
+   background:url(images/btn_next2.gif) right  no-repeat;
+   font-family:Verdana, Arial, Helvetica, sans-serif;
+}   
+.rightButton2 a{
+   color:#FFFFFF;
+   font-weight:bold;
+   text-decoration:none;
+   font-size:11px;
+   font:Arial, Helvetica, sans-serif;
+}
+.rightButton2 a:hover{
+   color:#FFFFFF;
+   font-weight:bold;
+   text-decoration:underline;
+   font-size:11px;
+}
+.leftButton_Empty{
+   width:63px;
+   height:20px;
+   float:left;
+   text-align:left;
+   margin:0px;
+   padding:3px 0 0 20px;
+
+}
+.rightButton_Empty{
+   width:97px;
+   height:20px;
+   float:right;
+   text-align:right;
+   margin:0px;
+   padding:3px 30px 0 0px;
+
+}

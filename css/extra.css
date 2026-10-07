@@ -1,0 +1,1766 @@
+html {
+  overflow-x:hidden;
+}
+a:hover {
+  text-decoration: none;
+}
+
+#onhover {
+  display: none;
+}
+#surround:hover span[id="initial"] {
+  display: none;
+}
+#surround:hover span[id="onhover"] {
+  display: block;
+}
+
+/* hover effect */
+#examples {
+}
+#examples .example {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  margin: 0 0 45px;
+}
+#examples .example .hover {
+  text-align: center;
+  margin: 0 auto;
+  padding: 0;
+  transition: all 0.2s ease-in-out;
+  position: relative;
+}
+#examples .example .hover:before, #examples .example .hover:after {
+  content: "";
+  position: absolute;
+  bottom: 0px;
+  width: 0px;
+  height: 3px;
+  transition: all 0.2s ease-in-out;
+  transition-duration: 0.75s;
+  opacity: 0;
+  background-color: #e69500;
+}
+
+#examples .example .hover.hover-3:before {
+  left: 50%;
+}
+#examples .example .hover.hover-3:after {
+  right: 50%;
+}
+
+#examples .example:hover .hover:before, #examples .example:hover .hover:after {
+  width: 100%;
+  opacity: 1;
+}
+#examples .example:hover .hover.hover-3:before, #examples .example:hover .hover.hover-3:after, #examples .example:hover .hover.hover-4:before, #examples .example:hover .hover.hover-4:after {
+  width: 25%;
+}
+/* hover effect */
+
+/* Light Box */
+/* The Modal (background) */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  padding-top: 10px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: black;
+}
+
+/* Modal Content */
+.modal-content {
+  position: relative;
+  background-color: #fefefe;
+  margin: auto;
+  padding: 0;
+  width: 90%;
+  max-width: 1200px;
+}
+
+/* The Close Button */
+.close {
+  color: white;
+  position: absolute;
+  top: 10px;
+  right: 25px;
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #999;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.mySlides {
+  display: none;
+}
+
+.cursor {
+  cursor: pointer;
+}
+
+/* Next & previous buttons */
+.prev,
+.next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -50px;
+  color: white;
+  font-weight: bold;
+  font-size: 40px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover,
+.next:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+img {
+  margin-bottom: -4px;
+}
+
+.caption-container {
+  text-align: center;
+  background-color: black;
+  padding: 2px 16px;
+  color: white;
+}
+
+.demo {
+  opacity: 0.6;
+}
+
+.active,
+.demo:hover {
+  opacity: 1;
+}
+
+img.hover-shadow {
+  transition: 0.3s;
+}
+
+.hover-shadow:hover {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+/*Light Box */
+
+
+/* Home Page Blocks */
+.blkone {
+  background-image: url('../img/mi-01.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  padding-top: 400px;
+}
+
+.blkone:hover {
+  background-image: url('../img/mi-01-hover.jpg');
+  text-decoration: none;
+}
+
+
+.blktwo {
+  background-image: url('../img/ser-01a.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  padding-top: 400px;
+}
+
+.blktwo:hover {
+  background-image: url('../img/ser-01a-hover.jpg');
+}
+
+.blkthr {
+  background-image: url('../img/sales-01a.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  padding-top: 350px;
+}
+
+.blkthr:hover {
+  background-image: url('../img/sales-01a-hover.jpg');
+}
+
+
+.blkfor {
+  background-image: url('../img/ent-01a.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  padding-top: 350px;
+}
+
+.blkfor:hover {
+  background-image: url('../img/ent-01a-hover.jpg');
+}
+
+
+.blkfiv {
+  background-image: url('../img/ent-02a.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  padding-top: 350px;
+}
+
+.blkfiv:hover {
+  background-image: url('../img/ent-02a-hover.jpg');
+}
+
+.blkfs20 {
+  font-size: 20px;
+}
+
+.blkfs18 {
+  font-size: 18px;
+}
+
+.blkfs16 {
+  font-size: 16px;
+}
+
+/* Home Page Blocks */
+
+/* About Page Blocks */
+.prftsz {
+  font-size: 22px;
+}
+
+.hr-sect {
+  display: flex;
+  flex-basis: 100%;
+  align-items: center;
+  color: rgba(0, 0, 0, 0.35);
+  margin: 8px 0px;
+}
+.hr-sect:before,
+.hr-sect:after {
+  content: "";
+  flex-grow: 1;
+  background: rgba(0, 0, 0, 0.35);
+  height: 1px;
+  font-size: 0px;
+  line-height: 0px;
+  margin: 0px 8px;
+}
+/* About Page Blocks */
+
+
+/* EQubeMI */
+ .equbemibg {
+   background-color: #e0efff;
+ }
+ .equmibg {
+  background-color: #e1e1e3;
+}
+ .blabtsm {
+   color: #383838;
+ }
+ .hdblcol {
+   color: #1b68f9;
+ }
+ .blkfs15 {
+  font-size: 15px;
+}
+.blkfs25 {
+  font-size: 25px;
+  letter-spacing: -0.5;
+}
+.blkfs20 {
+  font-size: 20px;
+  letter-spacing: -0.5;
+}
+.blkfs30 {
+  font-size: 30px;
+  letter-spacing: -0.5;
+}
+.blkfs50 {
+  font-size: 50px;
+}
+.fade2 {
+  transform: scale(0.9);
+  opacity: 0;
+  transition: all .2s linear;
+  display: block !important;
+}
+
+.fade2.show {
+  opacity: 1;
+  transform: scale(1);
+}
+.closmod {
+  position: absolute;
+  z-index: 100;
+  right: 0;
+  border: 0px;
+  font-size: 30px;
+  background-color: #a4a4a4;
+}
+.crpoint {
+  cursor: pointer;
+}
+ /* EQubeMI */
+
+
+ /* EQubeBi */
+ .equbebibg {
+  background-color: #f8ffb8;
+}
+.hdblcol {
+  color:#1b68f9;
+}
+.hdblbicol {
+  color:#9e8d00;
+}
+.hdbldcol {
+  color:#022c7d;
+}
+ /* EQubeBi */
+
+/* EQubeTm */
+  .equbetmbg {
+    background-color: #baf2db;
+  }
+  .hdtmcol {
+    color:#006f40;
+  }
+/* EQubeTm */
+
+/* Dealwall */
+.equbedwbg {
+  background-color: #ffd9b9;
+}
+.hddwcol {
+  color:#d13409;
+}
+.dwmobfl {
+  margin-top: -120px;
+}
+/* Dealwall */
+
+/* Mobile Center */
+.equbemcbg {
+  background-color: #f1dffe;
+}
+.hdmccol {
+  color:#550086;
+}
+/* Mobile center */
+
+
+.pfont {
+  font-size: 1.2em;
+}
+
+.doa {
+  line-height: 12px;;
+}
+
+.fimgbg {
+  background-image: url('../img/frmimgbg.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.h1font {
+  font-size: 2.2em;
+  letter-spacing: 0.2em;
+}
+
+.h1tgs {
+  font-size: 4em;
+  letter-spacing: 0.2em;
+  line-height: 0.8em;
+}
+
+.h1htgs {
+  font-size: 3.3em;
+  letter-spacing: 0.2em;
+  line-height: 0.8em;
+}
+
+.h2htgs {
+  font-size: 2.5em;
+  letter-spacing: 0.2em;
+  line-height: 0.8em;
+}
+
+
+.pfont01 {
+  font-size: 1.3em;
+}
+
+.popupbtn {
+  position: absolute;
+  right:1vw;
+  top:1vw;
+}
+
+.mobilenav {
+  background-color: none;
+  opacity: 1;
+}
+
+.badge:after{
+  content:attr(value);
+  font-size:12px;
+  background: red;
+  border-radius:50%;
+  padding:3px 10px;
+  position:relative;
+  left:-28px;
+  top:-10px;
+  opacity:0.9;
+  z-index: -1;
+  }
+
+.bbcl {
+  border: solid 1px #000;
+  border-radius: 1em;
+}
+
+.prohead {
+  font-size: 6vw;
+  line-height: 1em;
+  font-weight: 100;
+}
+
+.lnhgt {
+  line-height: 1.5em;;
+}
+
+.indhead {
+  font-size: 1.2em;
+  line-height: 1em;
+  padding-top: 1.5em;;
+}
+
+.indls {
+  top:18vh;
+}
+
+.indtxt {
+  top:1em;
+  font-size: 7em;
+  line-height: 0.9em;
+}
+
+.mgrbtm {
+  margin-bottom:25vh;
+}
+
+.tastind {
+  z-index: 0;
+  font-size:8em;
+  margin-top:23vh;
+  margin-left: 38vw;
+  position: relative;
+}
+
+.kdind {
+  z-index: 2;
+  position: relative;
+}
+
+.hldind {
+  z-index: 3;
+  font-size:9em;
+  margin-top:-6vh;
+  margin-left: 38vw;
+  position: relative;
+}
+
+.mlkind {
+  z-index: 0;
+  font-size:14.3em;
+  margin-top:-9vh;
+  margin-left: 52vw;
+  margin-bottom: 17vh;
+  position: relative;
+}
+
+.smcir {
+  z-index: 3;
+  margin-top:35vh;
+  margin-left: 4vw;
+  position: absolute;
+}
+
+.bgcir {
+  z-index: 100;
+  margin-top:87vh;
+  margin-left: 30vw;
+  position: relative;
+}
+
+.bigbottle {
+  z-index: 1; 
+  position: relative;
+}
+
+
+/* on scroll animation */
+
+
+.boy {
+  display: block;
+  position: absolute;
+}
+
+.cartoon {
+  width:55%;
+  z-index: 1;
+}
+
+
+.bbleft {
+  margin-left: 25%;
+}
+
+.sboy {
+  width:55%;
+  z-index: 1;
+}
+
+.cartoons {
+  width:35%;
+  z-index: 1;
+}
+
+.sboys {
+  width:35%;
+  z-index: 1;
+}
+
+.ovlshp {
+  width:50%;
+  z-index: 1;
+}
+
+
+
+
+/* On scroll animation */
+
+.ltrsp {
+  letter-spacing: 0.2em;
+}
+
+.brdrd {
+  border-radius:1em;
+}
+
+.brdrdin {
+  border-radius:0em 1em 1em 0em;
+}
+
+.brdrdot {
+  border-radius:1em 0em 0em 1em;
+}
+
+.w-60 {
+  width:60%;
+}
+
+.w-65 {
+  width:65%;
+}
+
+.w-76 {
+  width:76%;
+}
+.w-70 {
+  width:70%;
+  margin-left: 4%;
+}
+
+.w-40 {
+  width:40%;
+}
+
+.w-35 {
+  width:35%;
+}
+
+.w-30 {
+  width:30%;
+}
+
+.w-45 {
+  width:45%;
+}
+
+.w-55 {
+  width:55%;
+}
+
+.w-57 {
+  width:57%;
+}
+
+.footer-1 {
+  display: none;
+}
+
+.blabtfv {
+  color: #555555;
+}
+
+.blnav {
+  color: #76798d;
+}
+
+.blgrehd {
+  color: #1c2b4b;
+}
+
+.blabthd {
+  color: #46474d;
+}
+
+.whicol {
+    color:#fff;
+}
+
+.grcol {
+  color: #7FBC03;
+}
+
+.blkcol {
+  color: #000000;
+}
+
+.greycol {
+  color: #6f6f6f;
+}
+
+.greybg {
+  background-color: #cccccc;
+}
+
+.blkbg {
+    background-color: #000;
+}
+
+.whibg {
+  background-color: #fff;
+}
+
+.skibg {
+  background-color: #F7EFE0;
+}
+
+.grcoltbg {
+  background-color: #64d133;
+}
+
+.yelbg  {
+  background-color: #e4c800;
+}
+
+.rdcol  {
+  color: #E82C00;
+}
+
+.rdbg  {
+  background-color: #E82C00;
+}
+
+.blbg  {
+  background-color: #00529a;
+}
+
+.donaten  {
+  color: #000;
+  letter-spacing: 0.5em;
+}
+
+.lineh01  {
+  line-height: 1em;
+  padding-top: 4vw;
+}
+
+.obot {
+    background-color: #7FBC03;
+    color: #ffffff;
+}
+
+.obot:hover {
+  background-color: #ffffff;
+  color: #7FBC03;
+}
+
+.indextab {
+    width:auto;
+    border: solid 3px #7FBC03;
+    border-radius:4px;
+    color:#fff;
+    cursor: pointer;
+    text-transform: none;
+}
+
+.indextab:hover {
+  border: solid 2px #ffffff;
+  text-transform: none;
+  color:#7FBC03;
+  cursor: pointer;
+}
+
+.indfoot {
+  top: 63vh;
+  width:auto;
+}
+
+.sectxt {
+  top: 43vh;
+  font-size: 1.1em;
+  letter-spacing: 0.5em;
+  line-height: 3em;
+  font-weight: 100;
+  width:auto;
+}
+
+.secttwxtlt {
+  top: 23vh;
+  font-size: 4em;
+  width:auto;
+}
+
+.secttwxtrt {
+  top: 23vh;
+  font-size: 1em;
+  line-height: 1em;
+  width:auto;
+}
+
+.secthr {
+  top: 13vh;
+}
+
+.onebottleonetree {
+  background-image: url('../img/obot.png');
+  background-repeat: no-repeat;
+  background-position: top center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.linew {
+  width:2.5vw;
+}
+
+.obotlt {
+  top: -25vh;
+}
+
+.obotlt02 {
+  top: -25vh;
+}
+
+.obotlt03 {
+  top: 20vh;
+}
+
+.obotlt01 {
+  top: -24vh;
+}
+
+.indexbanner {
+    background-image: url('../img/provilac-banner.webp');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+}
+
+.section01 {
+  background-image: url('../img/farm-finest-about.png');
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.section02 {
+  background-image: url('../img/farm-finest-man-bg.png');
+  background-repeat: no-repeat;
+  background-position: bottom;
+  background-size: 100%;
+  width: 100%;
+  height: auto;
+}
+
+.section03 {
+  background-image: url('../img/farm-finest-ind.png');
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.section04 {
+  background-image: url('../img/section04.png');
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.section05 {
+  background-image: url('../img/obot01.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.section06 {
+  background-image: url('../img/obot02.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.section07 {
+  background-image: url('../img/obot03.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.ftrbg {
+  background-color: #F7EFE0;
+  line-height: 2.5em;
+  letter-spacing: .1em;
+  font-size: 0.9em;
+}
+
+.footlt {
+  text-align: left;
+}
+
+.footrt {
+  text-align: right;
+}
+
+.mvscr {
+  position:relative; 
+  bottom:5em;
+}
+
+.mvscrv {
+  position:relative; 
+  bottom:25em;
+}
+
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  /* Home Page Blocks */
+.blkone {
+  background-image: url('../img/mi-01.jpg');
+  background-repeat: no-repeat;
+  background-position: center right;
+  background-size: 70% auto;
+  background-color: #ecedf3;
+  padding-top: 250px;
+}
+
+.blkone:hover {
+  background-image: url('../img/mi-01-hover.jpg');
+  background-color: #e4e9f7;
+}
+
+
+.blktwo {
+  background-image: url('../img/ser-01a.jpg');
+  background-repeat: no-repeat;
+  background-position: center right;
+  background-size: 70% auto;
+  background-color: #ecedf3;
+  padding-top: 200px;
+}
+
+.blktwo:hover {
+  background-image: url('../img/ser-01a-hover.jpg');
+  background-color: #f6e6ff;
+}
+
+.blkthr {
+  background-image: url('../img/sales-01a.jpg');
+  background-repeat: no-repeat;
+  background-position: center right;
+  background-size: 70% auto;
+  background-color: #ecedf3;
+  padding-top: 200px;
+}
+
+.blkthr:hover {
+  background-image: url('../img/sales-01a-hover.jpg');
+  background-color: #ffe8dd;
+}
+
+
+.blkfor {
+  background-image: url('../img/ent-01a.jpg');
+  background-repeat: no-repeat;
+  background-position: center right;
+  background-size: 70% auto;
+  background-color: #ecedf3;
+  padding-top: 200px;
+}
+
+.blkfor:hover {
+  background-image: url('../img/ent-01a-hover.jpg');
+  background-color: #ccffea;
+}
+
+
+.blkfiv {
+  background-image: url('../img/ent-02a.jpg');
+  background-repeat: no-repeat;
+  background-position: center right;
+  background-size: 70% auto;
+  background-color: #ecedf3;
+  padding-top: 200px;
+}
+
+.blkfiv:hover {
+  background-image: url('../img/ent-02a-hover.jpg');
+  background-color: #f2ff80;
+}
+
+.blkfs20 {
+  font-size: 20px;
+}
+
+.blkfs22 {
+  font-size: 22px;
+}
+
+.blkfs18 {
+  font-size: 18px;
+}
+
+.blkfs16 {
+  font-size: 16px;
+}
+
+/* Home Page Blocks */
+  .indhead {
+    font-size: 2em;
+    line-height: 1em;
+    padding-top: 0em;;
+  }
+  .tastind {
+    z-index: 0;
+    font-size:4.5em;
+    margin-top:20vh;
+    margin-left: 45vw;
+    position: relative;
+  }
+  
+  .kdind {
+    z-index: 2;
+    position: relative;
+  }
+  .mgrbtm {
+    margin-bottom:2vh;
+  }
+  .hldind {
+    z-index: 3;
+    font-size:5.2em;
+    margin-top:-3vh;
+    margin-left: 45vw;
+    position: relative;
+  }
+  
+  .mlkind {
+    z-index: 0;
+    font-size:8.5em;
+    margin-top:-5vh;
+    margin-left: 55vw;
+    margin-bottom: 8vh;;
+    position: relative;
+  }
+  
+  .smcir {
+    z-index: 3;
+    margin-top:18vh;
+    margin-left: 5vw;
+    position: absolute;
+  }
+  
+  .bgcir {
+    z-index: 3;
+    margin-top:0vh;
+    margin-left: 30vw;
+    position: absolute;
+  }
+
+  .indextab {
+    width:auto;
+    border: solid 3px #7FBC03;
+    border-radius:4px;
+    color:#fff;
+    cursor: pointer;
+    text-transform: none;
+}
+
+.indextab:hover {
+  border: solid 2px #ffffff;
+  text-transform: none;
+  color:#7FBC03;
+  cursor: pointer;
+}
+
+.indfoot {
+  top: 63vh;
+  width:auto;
+}
+
+.sectxt {
+  top: 43vh;
+  font-size: 1em;
+  letter-spacing: 0.3em;
+  line-height: 3em;
+  font-weight: 100;
+  width:auto;
+}
+
+.secttwxtlt {
+  top: 23vh;
+  font-size: 2em;
+  width:auto;
+}
+
+.secttwxtrt {
+  top: 23vh;
+  font-size: 1em;
+  line-height: 1em;
+  width:auto;
+}
+
+.secthr {
+  top: 13vh;
+}
+
+.indexbanner {
+    background-image: url('../img/provilac-banner.webp');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+}
+
+.section01 {
+  background-image: url('../img/farm-finest-about.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.section02 {
+  background-image: url('../img/farm-finest-man-bg.png');
+  background-repeat: no-repeat;
+  background-position: bottom;
+  background-size: 100%;
+  width: 100%;
+  height: auto;
+}
+
+.section03 {
+  background-image: url('../img/farm-finest-ind.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.section04 {
+  background-image: url('../img/section04.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.ftrbg {
+  background-color: #F7EFE0;
+  line-height: 2.5em;
+  letter-spacing: .1em;
+  font-size: 0.9em;
+}
+  
+}
+
+@media (min-width: 1024px) and (max-width: 1920px) {
+  .indfoot {
+    top: 63vh;
+    width:auto;
+  }
+  
+  .sectxt {
+    top: 43vh;
+    font-size: 3.3em;
+    letter-spacing: 0em;
+    line-height: 1.2em;
+    font-weight: 100;
+    width:auto;
+  }
+  
+ 
+  
+  .secttwxtrt {
+    top: 23vh;
+    font-size: 1em;
+    line-height: 1em;
+    width:auto;
+  }
+  
+  .secthr {
+    top: 13vh;
+  }
+  
+  .indexbanner {
+      background-image: url('../img/provilac-banner.webp');
+      background-repeat: no-repeat;
+      background-position: top center;
+      background-color: #E82C00;
+      background-size: 100% 90%;
+      width: 100%;
+      height: 100%;
+  }
+
+  .indexbanner01 {
+    background-image: url('../img/provilac-banner.webp');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% 100%;
+    width: 100%;
+    height: 100%;
+}
+  
+  .section01 {
+    background-image: url('../img/farm-finest-about.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    height: 100vh;
+  }
+  
+  .section02 {
+    background-image: url('../img/farm-finest-man-bg.png');
+    background-repeat: no-repeat;
+    background-position: center 200px;
+    background-size: 100%;
+    width: 100%;
+    height: auto;
+  }
+  
+  .section03 {
+    background-image: url('../img/farm-finest-ind.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .section04 {
+    background-image: url('../img/section04.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .ftrbg {
+    background-color: #F7EFE0;
+    line-height: 2.5em;
+    letter-spacing: .1em;
+    font-size: 0.9em;
+    z-index: 100;
+    position: relative;
+  }
+}
+
+@media (min-width: 1920px) and (max-width: 6000px) {
+  .w-70 {
+    width:60%;
+    margin-left: 10%;
+  }
+  .indls {
+    top:32vh;
+  }
+
+  .prohead {
+    font-size: 6em;
+    line-height: 1em;
+    font-weight: 100;
+  }
+
+  .indtxt {
+    top:20vh;
+    font-size: 9em;
+    line-height: 0.9em;
+  }
+
+  .indhead {
+    font-size: 2em;
+    line-height: 1em;
+    padding-top: 0em;;
+  }
+
+  .tastind {
+    z-index: 0;
+    font-size:8em;
+    margin-top:20vh;
+    margin-left: 40vw;
+    position: absolute;
+  }
+  
+  .kdind {
+    z-index: 2;
+    position: relative;
+  }
+  
+  .hldind {
+    z-index: 3;
+    font-size:9em;
+    margin-top:31vh;
+    margin-left: 40vw;
+    position: absolute;
+  }
+  
+  .mlkind {
+    z-index: 3;
+    font-size:15em;
+    margin-top:42vh;
+    margin-left: 51vw;
+    position: absolute;
+  }
+  
+  .smcir {
+    z-index: 3;
+    margin-top:35vh;
+    margin-left: 7vw;
+    position: absolute;
+  }
+  
+  .bgcir {
+    z-index: 3;
+    margin-top:77vh;
+    margin-left: 30vw;
+    position: absolute;
+  }
+
+  .indfoot {
+    top: 63vh;
+    width:auto;
+  }
+  
+  .obotlt {
+    top: 5vh;
+  }
+
+  .obotlt02 {
+    top: 5vh;
+  }
+
+  .obotlt01 {
+    top: -35vh;
+  }
+
+  .sectxt {
+    top: 42vh;
+    font-size: 4.5em;
+    letter-spacing: 0em;
+    line-height: 1.2em;
+    font-weight: 100;
+    width:auto;
+  }
+  
+  .secttwxtlt {
+    top: 33vh;
+    font-size: 3em;
+    width:auto;
+  }
+  
+  .secttwxtrt {
+    top: 33vh;
+    font-size: 1em;
+    line-height: 1em;
+    width:auto;
+  }
+  
+  .secthr {
+    top: 13vh;
+  }
+  
+  .indexbanner {
+    background-image: url('../img/provilac-banner.webp');
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+      width: 100%;
+      height: 100%;
+  }
+  
+  .section01 {
+    background-image: url('../img/farm-finest-about.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .section02 {
+    background-image: url('../img/farm-finest-man-bg.png');
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-size: 100%;
+    width: 100%;
+    height: auto;
+  }
+  
+  .section03 {
+    background-image: url('../img/farm-finest-ind.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .section04 {
+    background-image: url('../img/section04.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .ftrbg {
+    background-color: #F7EFE0;
+    line-height: 2.5em;
+    letter-spacing: .1em;
+    font-size: 0.9em;
+  }
+  .mvscr {
+    position:relative; 
+    bottom:-8em;
+  }
+  .mvscrv {
+    position:relative; 
+    bottom:20em;
+  }
+}
+
+@media (min-width: 320px) and (max-width: 767px) {
+
+  /* Home Page Blocks */
+.blkone {
+  background-image: url('../img/mi-01.jpg');
+  background-repeat: no-repeat;
+  background-position: center right;
+  background-size: 70% auto;
+  background-color: #ecedf3;
+  padding-top: 250px;
+}
+
+.blkone:hover {
+  background-image: url('../img/mi-01-hover.jpg');
+  background-color: #e4e9f7;
+}
+
+
+.blktwo {
+  background-image: url('../img/ser-01a.jpg');
+  background-repeat: no-repeat;
+  background-position: center right;
+  background-size: 70% auto;
+  background-color: #ecedf3;
+  padding-top: 200px;
+}
+
+.blktwo:hover {
+  background-image: url('../img/ser-01a-hover.jpg');
+  background-color: #f6e6ff;
+}
+
+.blkthr {
+  background-image: url('../img/sales-01a.jpg');
+  background-repeat: no-repeat;
+  background-position: center right;
+  background-size: 70% auto;
+  background-color: #ecedf3;
+  padding-top: 200px;
+}
+
+.blkthr:hover {
+  background-image: url('../img/sales-01a-hover.jpg');
+  background-color: #ffe8dd;
+}
+
+
+.blkfor {
+  background-image: url('../img/ent-01a.jpg');
+  background-repeat: no-repeat;
+  background-position: center right;
+  background-size: 70% auto;
+  background-color: #ecedf3;
+  padding-top: 200px;
+}
+
+.blkfor:hover {
+  background-image: url('../img/ent-01a-hover.jpg');
+  background-color: #ccffea;
+}
+
+
+.blkfiv {
+  background-image: url('../img/ent-02a.jpg');
+  background-repeat: no-repeat;
+  background-position: center right;
+  background-size: 70% auto;
+  background-color: #ecedf3;
+  padding-top: 200px;
+}
+
+.blkfiv:hover {
+  background-image: url('../img/ent-02a-hover.jpg');
+  background-color: #f2ff80;
+}
+
+.blkfs20 {
+  font-size: 20px;
+}
+
+.blkfs18 {
+  font-size: 18px;
+}
+
+.blkfs16 {
+  font-size: 16px;
+}
+
+/* Home Page Blocks */
+
+
+  .h1htgs {
+    font-size: 2em;
+    letter-spacing: 0.1em;
+    line-height: 0.8em;
+  }
+  
+  .h2htgs {
+    font-size: 1.3em;
+    letter-spacing: 0.2em;
+    line-height: 0.8em;
+  }
+
+  .mobilenav {
+    background-image: none;
+  background-repeat: repeat;
+    opacity: 1;
+  }
+  .indls {
+    top:1vh;
+  }
+
+  .w-76 {
+    width:100%;
+  }
+
+  .prohead {
+    font-size: 3em;
+    line-height: 1em;
+    font-weight: 100;
+  }
+
+  .indtxt {
+    top:2vh;
+    font-size: 4em;
+    line-height: 0.9em;
+  }
+
+  .indhead {
+    font-size: 2em;
+    line-height: 1em;
+    padding-top: 0em;;
+  }
+
+  .tastind {
+    z-index: 0;
+    font-size:8vw;
+    margin-top:-48vw;
+    margin-left: 47vw;
+    position: relative;
+  }
+  
+  .kdind {
+    z-index: 2;
+    position: relative;
+  }
+  
+  .hldind {
+    z-index: 3;
+    font-size:9vw;
+    margin-top:-41vw;
+    margin-left: 47vw;
+    position: relative;
+  }
+  
+  .mlkind {
+    z-index: 3;
+    font-size:12vw;
+    margin-top:-34vw;
+    margin-left: 66vw;
+    margin-bottom: 1vh;
+    position: relative;
+  }
+  
+  .smcir {
+    z-index: 3;
+    margin-top:5vh;
+    margin-left: 70vw;
+    position: absolute;
+  }
+  
+  .bgcir {
+    z-index: 3;
+    margin-top:17vh;
+    margin-left: 30vw;
+    position: absolute;
+  }
+
+  .indextab {
+    width:auto;
+    border: solid 3px #7FBC03;
+    border-radius:4px;
+    color:#fff;
+    cursor: pointer;
+    text-transform: none;
+}
+
+.indextab:hover {
+  border: solid 2px #ffffff;
+  text-transform: none;
+  color:#7FBC03;
+  cursor: pointer;
+}
+
+.indfoot {
+  top: 63vh;
+  width:auto;
+}
+
+.sectxt {
+  top: 0vh;
+  font-size: 1.8em;
+  letter-spacing: 0.1em;
+  line-height: 2em;
+  font-weight: 100;
+  width:auto;
+}
+
+.secttwxtlt {
+  top: 0vh;
+  font-size: 2em;
+  width:auto;
+}
+
+.secttwxtrt {
+  top:0vh;
+  font-size: 1em;
+  line-height: 1em;
+  width:auto;
+}
+
+
+.secthr {
+  top: 13vh;
+}
+
+.onebottleonetree {
+  background-image: url('../img/obot.png');
+  background-repeat: no-repeat;
+  background-position: top center;
+  -webkit-background-size: auto;
+  -moz-background-size: auto;
+  -o-background-size: auto;
+  background-size: auto;
+  width: 100%;
+  height: 100%;
+}
+
+.linew {
+  width:8vw;
+}
+
+.obotlt {
+  top: 10vh;
+}
+
+.obotlt02 {
+  top: -5vh;
+}
+
+.obotlt01 {
+  top: -10vh;
+}
+
+.obotlt03 {
+  top: -7vh;
+}
+
+.footlt {
+  text-align: center;
+}
+
+.footrt {
+  text-align: center;
+}
+
+.indexbanner {
+    background-image: url('../img/provilac-banner.webp');
+    background-repeat: no-repeat;
+    background-position:  center;
+    background-size: auto 100%;
+    width: 100%;
+    height:auto;
+}
+
+.section01 {
+  background-image: url('../img/farm-finest-about.png');
+  background-repeat: no-repeat;
+  background-position: right;
+  background-size: cover;
+  width: 100%;
+  height: 50%;
+}
+
+.section02 {
+  background-image: url('../img/');
+  background-repeat: no-repeat;
+  background-position: bottom;
+  background-size: 100%;
+  width: 100%;
+  height: auto;
+}
+
+.section03 {
+  background-image: url('../img/farm-finest-ind.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+  height: auto;
+}
+
+.section04 {
+  background-image: url('../img/');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+  height: auto;
+}
+
+.section05 {
+  background-image: url('../img/');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+  height: auto;
+}
+
+.section06 {
+  background-image: url('../img/');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+  height: auto;
+}
+
+.section07 {
+  background-image: url('../img/');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+  height: auto;
+}
+
+.ftrbg {
+  background-color: #F7EFE0;
+  line-height: 2.5em;
+  letter-spacing: .1em;
+  font-size: 0.9em;
+}
+}
+

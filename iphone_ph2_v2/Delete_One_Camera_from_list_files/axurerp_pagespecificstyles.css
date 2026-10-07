@@ -1,0 +1,862 @@
+body {
+    margin: 0px;
+}
+
+div {
+    background-repeat: no-repeat;
+}
+
+.raw_image {
+    width: 100%;
+    height: 100%;
+}
+
+.preload {
+    display: none;
+}
+#main_container {
+}
+
+.form_sketch {
+    border-color: transparent;
+    background-color: transparent;
+}
+
+.u0_normal {
+    background-image: url('../Delete_One_Camera_from_list_files/u0_normal.png');
+}
+
+.u0_container {
+    position:absolute;
+    left:0px;
+    top:2px;
+    width:450px;
+    height:731px;
+}
+
+#u0_img {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:450px;
+    height:731px;
+}
+
+.u1 {
+    position:absolute;
+    left:2px;
+    top:358px;
+    width:446px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u2_normal {
+    background-image: url('../Delete_One_Camera_from_list_files/u2_normal.png');
+}
+
+.u2_container {
+    position:absolute;
+    left:66px;
+    top:138px;
+    width:320px;
+    height:43px;
+}
+
+#u2_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:326px;
+    height:49px;
+}
+
+.u3 {
+    position:absolute;
+    left:2px;
+    top:10px;
+    width:316px;
+    height:22px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u4_normal {
+    background-image: url('../Delete_One_Camera_from_list_files/u4_normal.png');
+}
+
+.u4_container {
+    position:absolute;
+    left:66px;
+    top:122px;
+    width:321px;
+    height:16px;
+}
+
+#u4_img {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:321px;
+    height:16px;
+}
+
+.u5 {
+    position:absolute;
+    left:2px;
+    top:0px;
+    width:317px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u6 {
+    position:absolute;
+    left:95px;
+    top:122px;
+    width:53px;
+    height:15px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u7 {
+    position:absolute;
+    left:198px;
+    top:122px;
+    width:57px;
+    height:15px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u8_normal {
+    background-image: url('../Delete_One_Camera_from_list_files/u8_normal.png');
+}
+
+.u8_container {
+    position:absolute;
+    left:66px;
+    top:220px;
+    width:160px;
+    height:172px;
+}
+
+#u8_img {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:160px;
+    height:172px;
+}
+
+.u9 {
+    position:absolute;
+    left:2px;
+    top:78px;
+    width:156px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u10_normal {
+    background-image: url('../Delete_One_Camera_from_list_files/u8_normal.png');
+}
+
+.u10_container {
+    position:absolute;
+    left:66px;
+    top:393px;
+    width:160px;
+    height:172px;
+}
+
+#u10_img {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:160px;
+    height:172px;
+}
+
+.u11 {
+    position:absolute;
+    left:2px;
+    top:78px;
+    width:156px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u12_normal {
+    background-image: url('../Delete_One_Camera_from_list_files/u12_normal.png');
+}
+
+.u12_container {
+    position:absolute;
+    left:226px;
+    top:392px;
+    width:159px;
+    height:173px;
+}
+
+#u12_img {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:159px;
+    height:173px;
+}
+
+.u13 {
+    position:absolute;
+    left:2px;
+    top:78px;
+    width:155px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u14_normal {
+    background-image: url('../Delete_One_Camera_from_list_files/u14_normal.png');
+}
+
+.u14_container {
+    position:absolute;
+    left:205px;
+    top:221px;
+    width:20px;
+    height:20px;
+}
+
+#u14_img {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:20px;
+    height:20px;
+}
+
+.u15 {
+    position:absolute;
+    left:2px;
+    top:2px;
+    width:16px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u16_normal {
+    background-image: url('../Delete_One_Camera_from_list_files/u14_normal.png');
+}
+
+.u16_container {
+    position:absolute;
+    left:202px;
+    top:396px;
+    width:20px;
+    height:20px;
+}
+
+#u16_img {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:20px;
+    height:20px;
+}
+
+.u17 {
+    position:absolute;
+    left:2px;
+    top:2px;
+    width:16px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u18_normal {
+    background-image: url('../Delete_One_Camera_from_list_files/u14_normal.png');
+}
+
+.u18_container {
+    position:absolute;
+    left:363px;
+    top:394px;
+    width:20px;
+    height:20px;
+}
+
+#u18_img {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:20px;
+    height:20px;
+}
+
+.u19 {
+    position:absolute;
+    left:2px;
+    top:2px;
+    width:16px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u20 {
+    position:absolute;
+    left:120px;
+    top:224px;
+    width:44px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u21_normal {
+    background-image: url('../Delete_One_Camera_from_list_files/u21_normal.png');
+}
+
+.u21_container {
+    position:absolute;
+    left:70px;
+    top:372px;
+    width:19px;
+    height:17px;
+}
+
+#u21_img {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:19px;
+    height:17px;
+}
+
+.u22 {
+    position:absolute;
+    left:2px;
+    top:0px;
+    width:15px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u23_normal {
+    background-image: url('../Delete_One_Camera_from_list_files/u23_normal.png');
+}
+
+.u23_container {
+    position:absolute;
+    left:226px;
+    top:221px;
+    width:158px;
+    height:170px;
+}
+
+#u23_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:164px;
+    height:176px;
+}
+
+.u24 {
+    position:absolute;
+    left:2px;
+    top:78px;
+    width:154px;
+    height:14px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u25_normal {
+    background-image: url('../Delete_One_Camera_from_list_files/u25_normal.png');
+}
+
+.u25_container {
+    position:absolute;
+    left:330px;
+    top:146px;
+    width:46px;
+    height:25px;
+}
+
+#u25_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:52px;
+    height:31px;
+}
+
+.u26 {
+    position:absolute;
+    left:2px;
+    top:6px;
+    width:42px;
+    height:14px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u27_normal {
+    background-image: url('../Delete_One_Camera_from_list_files/u27_normal.png');
+}
+
+.u27_container {
+    position:absolute;
+    left:70px;
+    top:145px;
+    width:10px;
+    height:28px;
+}
+
+#u27_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:16px;
+    height:34px;
+}
+
+.u28 {
+    position:absolute;
+    left:2px;
+    top:6px;
+    width:6px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u29_normal {
+    background-image: url('../Delete_One_Camera_from_list_files/u29_normal.png');
+}
+
+.u29_container {
+    position:absolute;
+    left:80px;
+    top:145px;
+    width:50px;
+    height:28px;
+}
+
+#u29_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:56px;
+    height:34px;
+}
+
+.u30 {
+    position:absolute;
+    left:2px;
+    top:7px;
+    width:46px;
+    height:14px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u31_normal {
+    background-image: url('../Delete_One_Camera_from_list_files/u31_normal.png');
+}
+
+.u31_container {
+    position:absolute;
+    left:66px;
+    top:183px;
+    width:319px;
+    height:34px;
+}
+
+#u31_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:325px;
+    height:40px;
+}
+
+.u32 {
+    position:absolute;
+    left:2px;
+    top:9px;
+    width:315px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u33_normal {
+    background-image: url('../Delete_One_Camera_from_list_files/u33_normal.png');
+}
+
+.u33_container {
+    position:absolute;
+    left:75px;
+    top:186px;
+    width:300px;
+    height:28px;
+}
+
+#u33_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:306px;
+    height:34px;
+}
+
+.u34 {
+    position:absolute;
+    left:2px;
+    top:6px;
+    width:296px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u35_normal {
+    background-image: url('../Delete_One_Camera_from_list_files/u35_normal.png');
+}
+
+.u35_container {
+    position:absolute;
+    left:135px;
+    top:149px;
+    width:20px;
+    height:20px;
+}
+
+#u35_img {
+    position:absolute;
+    left:-3px;
+    top:-3px;
+    width:26px;
+    height:26px;
+}
+
+.u36 {
+    position:absolute;
+    left:2px;
+    top:2px;
+    width:16px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u37_normal {
+    background-image: url('../Delete_One_Camera_from_list_files/u37_normal.png');
+}
+
+.u37_container {
+    position:absolute;
+    left:204px;
+    top:370px;
+    width:19px;
+    height:20px;
+}
+
+#u37_img {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:19px;
+    height:20px;
+}
+
+.u38 {
+    position:absolute;
+    left:2px;
+    top:2px;
+    width:15px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u39 {
+    position:absolute;
+    left:125px;
+    top:396px;
+    width:44px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u40_normal {
+    background-image: url('../Delete_One_Camera_from_list_files/u21_normal.png');
+}
+
+.u40_container {
+    position:absolute;
+    left:69px;
+    top:545px;
+    width:19px;
+    height:17px;
+}
+
+#u40_img {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:19px;
+    height:17px;
+}
+
+.u41 {
+    position:absolute;
+    left:2px;
+    top:0px;
+    width:15px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u42_normal {
+    background-image: url('../Delete_One_Camera_from_list_files/u37_normal.png');
+}
+
+.u42_container {
+    position:absolute;
+    left:203px;
+    top:543px;
+    width:19px;
+    height:20px;
+}
+
+#u42_img {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:19px;
+    height:20px;
+}
+
+.u43 {
+    position:absolute;
+    left:2px;
+    top:2px;
+    width:15px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u44_normal {
+    background-image: url('../Delete_One_Camera_from_list_files/u21_normal.png');
+}
+
+.u44_container {
+    position:absolute;
+    left:230px;
+    top:545px;
+    width:19px;
+    height:17px;
+}
+
+#u44_img {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:19px;
+    height:17px;
+}
+
+.u45 {
+    position:absolute;
+    left:2px;
+    top:0px;
+    width:15px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u46_normal {
+    background-image: url('../Delete_One_Camera_from_list_files/u37_normal.png');
+}
+
+.u46_container {
+    position:absolute;
+    left:364px;
+    top:543px;
+    width:19px;
+    height:20px;
+}
+
+#u46_img {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:19px;
+    height:20px;
+}
+
+.u47 {
+    position:absolute;
+    left:2px;
+    top:2px;
+    width:15px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
+.u48_normal {
+    background-image: url('../Delete_One_Camera_from_list_files/u48_normal.png');
+}
+
+.u48_container {
+    position:absolute;
+    left:66px;
+    top:566px;
+    width:319px;
+    height:34px;
+}
+
+#u48_img {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:319px;
+    height:34px;
+}
+
+.u49 {
+    position:absolute;
+    left:2px;
+    top:9px;
+    width:315px;
+    height:16px;
+    ;
+    ;
+    ;
+    font-family:Arial;
+    text-align:left;
+    word-wrap:break-word;
+}
+
