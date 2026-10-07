@@ -1,0 +1,22 @@
+# Upload exclusions for `vercel` CLI deployments.
+# (Git-based deployments ignore this file but produce the same site, because
+# scripts/build-vercel.mjs skips exactly the same folders.)
+
+.git
+node_modules
+.vercel
+.arena
+
+# Generated at build time on Vercel - never upload a local copy
+public
+
+# Archives that are not part of the deployed site
+old-portfolio
+test
+
+# Dev-only leftovers and secrets
+*.map
+Thumbs.db
+.env
+.env.local
+*.log

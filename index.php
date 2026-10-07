@@ -12,7 +12,7 @@
 
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <link rel="stylesheet" href="css/font-awesome.min.css">
-  <link href="../css/aos.css" rel="stylesheet">
+  <link href="css/aos.css" rel="stylesheet">
   <link href="css/extra.css" rel="stylesheet">
   <link href="css/text.css" rel="stylesheet">
   
@@ -221,7 +221,7 @@ I'm constantly exploring <strong>AI tools</strong>,
       pause: false
   })
 </script>
-<script src="../js/aos.js"></script>
+<script src="js/aos.js"></script>
 <script>
   AOS.init();
 </script>

@@ -1,0 +1,16 @@
+{
+  "name": "anilsutarweb",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Anil Sutar — portfolio site, built as a static deployment for Vercel",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "node scripts/build-vercel.mjs",
+    "dev": "node scripts/dev-server.mjs --build",
+    "preview": "node scripts/dev-server.mjs",
+    "check": "node scripts/check-links.mjs",
+    "verify:render": "node scripts/verify-render.mjs"
+  }
+}

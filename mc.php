@@ -38,7 +38,7 @@ if($_SESSION['password'])
 
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <link rel="stylesheet" href="css/font-awesome.min.css">
-  <link href="../css/aos.css" rel="stylesheet">
+  <link href="css/aos.css" rel="stylesheet">
   <link href="css/extra.css" rel="stylesheet">
   <link href="css/text.css" rel="stylesheet">
   
@@ -349,7 +349,7 @@ onkeydown="if ((arguments[0] || window.event).ctrlKey) return false">
                                 <p class="sfprolit blgre blkfs15 mb-2">
                                     Those high-fidelity wireframes were then used to create a revised prototype. This version captures the intended look and feel of the app and improves upon the mid-fidelity prototype by including the recommended revisions determined from usability testing. 
                                 </p>
-                                <p class="sfprolit blgre blkfs15"><a href="iphone_ph2_v2/login.html" target="blank" style="text-decoration: none;"><span class="hdmccol">Click to see the prototype</span></a></p>
+                                <p class="sfprolit blgre blkfs15"><a href="iphone_ph2_v2/Login.html" target="blank" style="text-decoration: none;"><span class="hdmccol">Click to see the prototype</span></a></p>
                             </div>
                           </div>
 
@@ -478,7 +478,7 @@ $('#exampleModal').on('hide.bs.modal', function (e) {
   }
   </script>
 
-<script src="../js/aos.js"></script>
+<script src="js/aos.js"></script>
 <script>
   AOS.init();
 </script>
@@ -504,7 +504,7 @@ else
 
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <link rel="stylesheet" href="css/font-awesome.min.css">
-  <link href="../css/aos.css" rel="stylesheet">
+  <link href="css/aos.css" rel="stylesheet">
   <link href="css/extra.css" rel="stylesheet">
   <link href="css/text.css" rel="stylesheet">
 
