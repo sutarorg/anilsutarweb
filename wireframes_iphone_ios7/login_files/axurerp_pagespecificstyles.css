@@ -27,7 +27,7 @@ div {
 }
 
 .u0_normal {
-    background-image: url('../Login_files/u0_normal.png');
+    background-image: url('u0_normal.png');
 }
 
 .u0_container {
@@ -243,7 +243,7 @@ div {
 }
 
 .u13_normal {
-    background-image: url('../Login_files/u13_normal.png');
+    background-image: url('u13_normal.png');
 }
 
 .u13_container {
@@ -290,7 +290,7 @@ div {
 }
 
 .u16_normal {
-    background-image: url('../Login_files/u16_normal.png');
+    background-image: url('u16_normal.png');
 }
 
 .u16_container {
