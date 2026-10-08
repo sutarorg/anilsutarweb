@@ -1,20 +1,18 @@
 (function () {
   'use strict';
 
-  // Frontend-only sign-in by request. These values are visible to site visitors
-  // and are not suitable for protecting confidential content.
-  var VALID_EMAIL = 'anilrsutar@gmail.com';
+  // Frontend-only password gate. This value is visible to site visitors
+  // and is not suitable for protecting confidential content.
   var VALID_PASSWORD = 'oxford@123';
   var ACCESS_KEY = 'anilsutar.workAccess';
   var ACCESS_VALUE = 'granted';
 
   var form = document.getElementById('work-login');
-  var emailInput = document.getElementById('email');
   var passwordInput = document.getElementById('password');
   var feedback = document.getElementById('login-feedback');
   var submitButton = document.getElementById('login-submit');
 
-  if (!form || !emailInput || !passwordInput || !feedback || !submitButton) return;
+  if (!form || !passwordInput || !feedback || !submitButton) return;
 
   try {
     if (window.sessionStorage.getItem(ACCESS_KEY) === ACCESS_VALUE) {
@@ -31,10 +29,9 @@
 
     if (!form.reportValidity()) return;
 
-    var email = emailInput.value.trim().toLowerCase();
     var password = passwordInput.value;
-    if (email !== VALID_EMAIL || password !== VALID_PASSWORD) {
-      feedback.textContent = 'Those details do not match. Please check your email and password.';
+    if (password !== VALID_PASSWORD) {
+      feedback.textContent = 'Incorrect password. Please try again.';
       passwordInput.value = '';
       passwordInput.focus();
       return;
@@ -43,12 +40,12 @@
     try {
       window.sessionStorage.setItem(ACCESS_KEY, ACCESS_VALUE);
     } catch (error) {
-      feedback.textContent = 'Your browser could not save this sign-in. Please allow session storage and try again.';
+      feedback.textContent = 'Your browser could not save access. Please allow session storage and try again.';
       return;
     }
 
     submitButton.disabled = true;
-    submitButton.textContent = 'Signing you in…';
+    submitButton.textContent = 'Submitting…';
     window.location.replace('/work.php');
   });
 }());

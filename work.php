@@ -12,7 +12,7 @@
           return;
         }
       } catch (error) {
-        // If browser storage is unavailable, keep the page locked and send the visitor to sign in.
+        // If browser storage is unavailable, keep the page locked and send the visitor to enter the password.
       }
       window.location.replace('/login.php');
     }());

@@ -89,9 +89,9 @@ rounds) and wrapped in a small unlock page. The visitor's browser decrypts it
 with WebCrypto after the correct password is entered; the plaintext is not
 included in the deployed page files.
 
-**3. `/work.php` has a separate frontend-only sign-in page.**
-Visitors who open `/work.php` are sent to `/login.php`; a successful sign-in
-returns them to the work page. The credentials and access check are in
+**3. `/work.php` has a separate frontend-only password page.**
+Visitors who open `/work.php` are sent to `/login.php`; entering the correct password
+returns them to the work page. The password and access check are in
 `js/login.js`, as requested. This is only a convenience gate, not secure access
 control: anyone can inspect the deployed frontend or bypass browser storage.
 Do not use it to protect sensitive information.
