@@ -1,0 +1,22 @@
+# robots.txt for https://anilsutar.com - generated from scripts/lib/seo.mjs by
+# `npm run seo` (PHP/IIS host) and scripts/build-vercel.mjs (static build);
+# do not edit by hand.
+#
+# The public pages of the site are listed in https://anilsutar.com/sitemap.xml.
+
+User-agent: *
+Allow: /
+
+# Password-protected case studies: visitors only ever see a password prompt
+Disallow: /bi.php
+Disallow: /dw.php
+Disallow: /mc.php
+Disallow: /mi.php
+Disallow: /tm.php
+Disallow: /work2.php
+
+# Prototype archive of the password-protected case studies
+Disallow: /iphone_ph2_v2/
+Disallow: /wireframes_iphone_ios7/
+
+Sitemap: https://anilsutar.com/sitemap.xml
