@@ -11,6 +11,7 @@
     "dev": "node scripts/dev-server.mjs --build",
     "preview": "node scripts/dev-server.mjs",
     "check": "node scripts/check-links.mjs",
+    "seo": "node scripts/generate-seo.mjs",
     "verify:render": "node scripts/verify-render.mjs"
   }
 }

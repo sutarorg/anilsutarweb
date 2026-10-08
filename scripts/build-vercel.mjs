@@ -31,6 +31,9 @@
  *     plaintext never reaches the deployed site and the password itself is
  *     never stored anywhere - it only derives the key. Visitors unlock the
  *     page in their browser via WebCrypto.
+ *  5. `sitemap.xml` and `robots.txt` are generated from the pages that really
+ *     exist (scripts/lib/seo.mjs does the same for the committed copies at the
+ *     repository root, which the PHP/IIS host serves).
  *
  * Environment variables
  * ---------------------
@@ -51,6 +54,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 import { isGatedPage, renderPhpPage } from './lib/php-page.mjs';
+import { SITE_ORIGIN, collectSitePages, missingPages, renderRobots, renderSitemap } from './lib/seo.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const OUT = path.join(ROOT, 'public');
@@ -72,7 +76,7 @@ const EXCLUDE_PATHS = new Set([
 
 /** Junk / dev files dropped anywhere in the tree. */
 const EXCLUDE_FILE =
-  /^(\.DS_Store|Thumbs\.db|desktop\.ini|web\.config|\.htaccess|\.htpasswd|\.user\.ini|\.env(\..*)?|\.gitignore|\.vercelignore|package(-lock)?\.json|vercel\.json|.*\.md)$/i;
+  /^(\.DS_Store|Thumbs\.db|desktop\.ini|web\.config|\.htaccess|\.htpasswd|\.user\.ini|\.env(\..*)?|\.gitignore|\.vercelignore|package(-lock)?\.json|vercel\.json|sitemap\.xml|robots\.txt|.*\.md)$/i;
 const EXCLUDE_EXT = /\.(map|log)$/i;
 
 const NEVER_COPY_DIRS = new Set(['node_modules', '.git', '.vercel', 'test']);
@@ -394,7 +398,30 @@ for (const name of phpPages) {
 // 3. extras
 writeOut('404.html', notFoundPage);
 
-// 4. summary
+// 4. search-engine files, generated from the pages that really exist. The
+//    copies at the repository root (served by the PHP/IIS host) come from the
+//    same module through `npm run seo`; here they are written for the static
+//    deployment, which additionally serves /pages/*.html duplicates.
+const seo = collectSitePages(ROOT, { publicWork: PUBLIC_WORK });
+const missing = missingPages(seo.pages, OUT);
+if (missing.length) {
+  throw new Error(
+    `[build] the sitemap would list ${missing.length} page(s) that are not in the build:\n` +
+      missing.map((url) => `          ${url}`).join('\n')
+  );
+}
+writeOut('sitemap.xml', renderSitemap(seo.pages));
+writeOut(
+  'robots.txt',
+  renderRobots({
+    disallow: [
+      ...seo.disallow,
+      { path: '/pages/', reason: 'the .php URLs are the canonical ones for these rendered copies' },
+    ],
+  })
+);
+
+// 5. summary
 const mb = (n) => (n / 1024 / 1024).toFixed(1) + ' MB';
 console.log(`[build] copied ${stats.copied} static files`);
 console.log('[build] homepage:  /  →  public/index.html   (rendered from index.php)');
@@ -408,6 +435,11 @@ for (const name of phpPages) {
   console.log(`          /${name}  →  ${name.replace(/\.php$/i, '.html')}   [${label}]`);
 }
 console.log(`[build] output: ${stats.files} files, ${mb(stats.bytes)}`);
+console.log(`[build] seo: /sitemap.xml — ${seo.pages.length} URLs for ${SITE_ORIGIN}`);
+console.log(
+  `[build] seo: /robots.txt — ${seo.disallow.length} disallowed path(s), ` +
+    `${seo.skipped.length} URL(s) left out of the sitemap (see \`npm run seo\`)`
+);
 if (gatedPages.length && !PASSWORD && !PUBLIC_WORK) {
   console.log(
     '\n[build] !  PORTFOLIO_PASSWORD is not set, so ' +

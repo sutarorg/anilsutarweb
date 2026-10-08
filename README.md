@@ -75,6 +75,8 @@ existing URL working:
 /work.php          →  public/pages/work.html    (work page)
 /home.html         →  public/home.html          (legacy 2009 homepage + archive nav)
 /old-portfolio/    →  public/old-portfolio/     (older site on this domain)
+/robots.txt        →  public/robots.txt         (generated, see "Search engines")
+/sitemap.xml       →  public/sitemap.xml        (generated, see "Search engines")
 /anything-else     →  public/...                (1:1 static copy)
 ```
 
@@ -116,6 +118,7 @@ Notes:
 | `npm run build` | Builds into `public/`. |
 | `npm run preview` | Serves an existing build (no rebuild). |
 | `npm run check` | Scans the built site for broken links, missing assets and case-sensitivity bugs. |
+| `npm run seo` | Rewrites `robots.txt` and `sitemap.xml` at the repository root (the copies the PHP host serves). `-- --check` only reports whether they are up to date. |
 | `npm run verify:render` | Optional: compares the static pages against real PHP (`npm install --no-save php-wasm` first). |
 
 `npm run dev` is the closest thing to production you can get locally. Opening
@@ -144,6 +147,64 @@ archive stay reachable without any redirects in between. `index.php` carries a
 `rel="canonical"` pointing at `https://anilsutar.com/` so the three equivalent
 addresses (`/`, `/index.html`, `/index.php`) do not compete in search results.
 
+## Search engines: `robots.txt` and `sitemap.xml`
+
+Both files are generated from the pages that actually exist, by
+`scripts/lib/seo.mjs`, so a page can never be added to one and forgotten in the
+other:
+
+* **`sitemap.xml`** lists the 36 public pages — the portfolio home page (`/`) and
+  the legacy 2009 pages with their galleries — under their canonical
+  `https://anilsutar.com` URL.
+* **`robots.txt`** allows the public pages, disallows the password-gated case
+  studies (a visitor only ever sees a password prompt there) and the two
+  prototype archives those case studies are built on, and points crawlers at
+  the sitemap.
+
+Both deployments get the same rules:
+
+| Deployment | Files | Written by |
+| --- | --- | --- |
+| PHP/IIS host | `robots.txt` and `sitemap.xml` at the repository root (committed) | `npm run seo` |
+| Vercel (static) | `public/robots.txt` and `public/sitemap.xml` | `npm run build` |
+
+The static build adds one rule that the PHP host does not need: `Disallow:
+/pages/`, because it serves every page twice there — `/work.php` *and*
+`/pages/work.html` — and only the `.php` URL is canonical.
+
+Run `npm run seo` after adding or removing a page. It prints everything that is
+deliberately *not* in the sitemap, with the reason, so the rules can be reviewed
+without reading the code:
+
+```
+[seo] sitemap.xml: 36 URLs for https://anilsutar.com
+[seo] robots.txt: 8 disallowed path(s)
+[seo] not in the sitemap:
+          /work.php  -  the gated work section: the visitor is signed in at /login.php (noindex)
+          /work1.php  -  superseded by the password-gated /work.php; nothing on the site links to it
+          /bi.php  -  password-protected case study
+          ...
+```
+
+To change what is listed, edit the three tables at the top of
+`scripts/lib/seo.mjs` and run `npm run seo` again:
+
+| Table | Controls |
+| --- | --- |
+| `NOT_ADVERTISED` | public pages that are kept out of the sitemap (delete a line to list the page again) |
+| `ARCHIVE_DIRS` | whole folders: the case-study prototypes are also disallowed in `robots.txt`; the older-site mirror and the dead Flash e-cards are simply not advertised |
+| `WORK_GATE` | the sign-in pages of the work section — left out of the sitemap, but not disallowed: `/login.php` carries `<meta name="robots" content="noindex, nofollow">` and `/work.php` redirects to it, and `robots.txt` could not remove a page from search results anyway (it only stops crawling). |
+
+When `PORTFOLIO_PUBLIC_WORK=1` is set, the case studies lose their password and
+the build lists them in the sitemap and drops their `Disallow` rules, so the
+static deployment always describes itself correctly.
+
+`lastmod` is intentionally not written: the only date available for a page is
+its checkout time on the build machine, and a wrong `lastmod` is worse than none
+(search engines only use `loc` and `lastmod` in any case).
+
+---
+
 ## Repository notes
 
 * **Included in the deployment:** everything at the top level, plus `css/`,
@@ -151,6 +212,10 @@ addresses (`/`, `/index.html`, `/index.php`) do not compete in search results.
   `old-portfolio/`, `iphone_ph2_v2/` and `wireframes_iphone_ios7/` (the latter
   two are linked from the case studies). The older site is available on this
   domain at `/old-portfolio/`.
+* **Search-engine files:** `robots.txt` and `sitemap.xml` are generated, not
+  hand-written — the committed copies at the repository root are the ones the
+  PHP host serves, and the build writes matching copies into `public/` for
+  Vercel (see *Search engines* above).
 * **Excluded from the deployment** (still in Git, just not uploaded): `test/`
   (leftover server-language probes), source maps, `Thumbs.db`, `web.config`,
   `.htaccess`, `.user.ini`, and the build tooling. Change `EXCLUDE_PATHS` in
