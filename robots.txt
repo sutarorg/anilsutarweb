@@ -1,8 +1,8 @@
-# robots.txt for https://anilsutar.com - generated from scripts/lib/seo.mjs by
+# robots.txt for https://anilsutar.in - generated from scripts/lib/seo.mjs by
 # `npm run seo` (PHP/IIS host) and scripts/build-vercel.mjs (static build);
 # do not edit by hand.
 #
-# The public pages of the site are listed in https://anilsutar.com/sitemap.xml.
+# The public pages of the site are listed in https://anilsutar.in/sitemap.xml.
 
 User-agent: *
 Allow: /
@@ -19,4 +19,4 @@ Disallow: /work2.php
 Disallow: /iphone_ph2_v2/
 Disallow: /wireframes_iphone_ios7/
 
-Sitemap: https://anilsutar.com/sitemap.xml
+Sitemap: https://anilsutar.in/sitemap.xml
