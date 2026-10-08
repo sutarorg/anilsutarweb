@@ -1,6 +1,6 @@
 # Anil Sutar — portfolio site
 
-The source of **anilsutar.com**: a modern portfolio (`.php` pages, Bootstrap, AOS)
+The source of **anilsutar.in**: a modern portfolio (`.php` pages, Bootstrap, AOS)
 plus the older static site and the carried-over prototype archives.
 
 The repository is set up to deploy to **Vercel as a fully static site** — no PHP
@@ -144,7 +144,7 @@ http://localhost:3000/work.php sends you to the separate sign-in page first.
 
 So there is exactly one home page — `index.php` — and the old homepage and its
 archive stay reachable without any redirects in between. `index.php` carries a
-`rel="canonical"` pointing at `https://anilsutar.com/` so the three equivalent
+`rel="canonical"` pointing at `https://anilsutar.in/` so the three equivalent
 addresses (`/`, `/index.html`, `/index.php`) do not compete in search results.
 
 ## Search engines: `robots.txt` and `sitemap.xml`
@@ -155,7 +155,7 @@ other:
 
 * **`sitemap.xml`** lists the 36 public pages — the portfolio home page (`/`) and
   the legacy 2009 pages with their galleries — under their canonical
-  `https://anilsutar.com` URL.
+  `https://anilsutar.in` URL.
 * **`robots.txt`** allows the public pages, disallows the password-gated case
   studies (a visitor only ever sees a password prompt there) and the two
   prototype archives those case studies are built on, and points crawlers at
@@ -177,7 +177,7 @@ deliberately *not* in the sitemap, with the reason, so the rules can be reviewed
 without reading the code:
 
 ```
-[seo] sitemap.xml: 36 URLs for https://anilsutar.com
+[seo] sitemap.xml: 36 URLs for https://anilsutar.in
 [seo] robots.txt: 8 disallowed path(s)
 [seo] not in the sitemap:
           /work.php  -  the gated work section: the visitor is signed in at /login.php (noindex)

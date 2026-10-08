@@ -35,7 +35,7 @@ import path from 'node:path';
 import { isGatedPage } from './php-page.mjs';
 
 /** Every URL in the sitemap is absolute and uses this origin. */
-export const SITE_ORIGIN = 'https://anilsutar.com';
+export const SITE_ORIGIN = 'https://anilsutar.in';
 
 /**
  * Folders that are part of the deployment. The case-study prototypes are kept
