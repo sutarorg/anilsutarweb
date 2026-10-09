@@ -155,8 +155,24 @@ function encryptHtml(html, password) {
 const esc = (s) =>
   s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
-/** Self-contained unlock screen (no external CSS/JS, works offline). */
-function unlockPage(title, payload, notice) {
+/** Self-contained unlock screen (no external CSS/JS, works offline).
+ *
+ * options:
+ *   remember  store the password in sessionStorage so reloads of this tab do
+ *             not ask again (case-study pages). The home page passes false:
+ *             it must ask on every visit and never keep anything on the
+ *             device.
+ *   lead      sentence under the heading.
+ *   button    submit-button label.
+ *   homeLink  show the "go to homepage" footer link (pointless on the
+ *             homepage itself).
+ */
+function unlockPage(title, payload, notice, {
+  remember = true,
+  lead = 'This case study is private. Enter the password to view it.',
+  button = 'View case study',
+  homeLink = true,
+} = {}) {
   const json = JSON.stringify(payload).replace(/</g, '\\u003c');
   return `<!DOCTYPE html>
 <html lang="en">
@@ -208,24 +224,25 @@ function unlockPage(title, payload, notice) {
   <main class="card">
     <img src="/img/anil-sutar-logo.png" alt="Anil Sutar" onerror="this.style.display='none'">
     <h1>${esc(title)}</h1>
-    <p class="lead">This case study is private. Enter the password to view it.</p>
+    <p class="lead">${esc(lead)}</p>
 
     <form id="unlock" ${notice ? 'hidden' : ''} autocomplete="off">
       <label for="pw">Password</label>
       <input id="pw" name="pass" type="password" autocomplete="current-password" autofocus required ${notice ? 'disabled' : ''}>
-      <button type="submit" id="go">View case study</button>
+      <button type="submit" id="go">${esc(button)}</button>
     </form>
 
     <div class="msg" id="msg" role="status" aria-live="polite"></div>
     ${notice ? `<div class="notice">${notice}</div>` : ''}
 
-    <footer><a href="/">&#8592; Go to homepage</a></footer>
+    ${homeLink ? '<footer><a href="/">&#8592; Go to homepage</a></footer>' : ''}
   </main>
 
 <script type="application/json" id="payload">${json}</script>
 <script>
 (function () {
   var KEY = 'anilsutar.unlock';
+  var REMEMBER = ${remember};
   var payload = JSON.parse(document.getElementById('payload').textContent);
   var form = document.getElementById('unlock');
   var input = document.getElementById('pw');
@@ -266,16 +283,16 @@ function unlockPage(title, payload, notice) {
       .then(function (plain) { return new TextDecoder().decode(plain); });
   }
 
-  function tryUnlock(password, remember) {
+  function tryUnlock(password) {
     button && (button.disabled = true);
     setMsg('Decrypting…', 'busy');
     unlock(password).then(function (html) {
-      try { sessionStorage.setItem(KEY, password); } catch (e) {}
+      if (REMEMBER) { try { sessionStorage.setItem(KEY, password); } catch (e) {} }
       document.open();
       document.write(html);
       document.close();
     }).catch(function () {
-      if (remember) { try { sessionStorage.removeItem(KEY); } catch (e) {} }
+      if (REMEMBER) { try { sessionStorage.removeItem(KEY); } catch (e) {} }
       setMsg('Incorrect password. Please try again.', 'error');
       button && (button.disabled = false);
       input && input.select();
@@ -284,14 +301,16 @@ function unlockPage(title, payload, notice) {
 
   form && form.addEventListener('submit', function (event) {
     event.preventDefault();
-    input.value && tryUnlock(input.value, true);
+    input.value && tryUnlock(input.value);
   });
 
-  var remembered = null;
-  try { remembered = sessionStorage.getItem(KEY); } catch (e) {}
-  if (remembered && input) {
-    input.value = remembered;
-    tryUnlock(remembered, false);
+  if (REMEMBER && input) {
+    var remembered = null;
+    try { remembered = sessionStorage.getItem(KEY); } catch (e) {}
+    if (remembered) {
+      input.value = remembered;
+      tryUnlock(remembered);
+    }
   }
 })();
 </script>
@@ -378,7 +397,24 @@ for (const name of phpPages) {
       : 'No password is configured for this deployment yet. Add the <code>PORTFOLIO_PASSWORD</code> ' +
         'environment variable to this project on Vercel (or to <code>.env</code> locally) and deploy ' +
         'again to unlock this case study.';
-    output = unlockPage('Protected case study', PASSWORD ? encryptHtml(html, PASSWORD) : { v: 1, locked: true }, notice);
+    const isHome = /^index\.php$/i.test(name);
+    // The home page never remembers the password: nothing may be stored on
+    // the visitor's device, so every visit asks again and the page is locked
+    // again once the visitor leaves.
+    const opts = isHome
+      ? {
+          remember: false,
+          lead: 'This page is private. Enter the password to view it.',
+          button: 'View page',
+          homeLink: false,
+        }
+      : {};
+    output = unlockPage(
+      isHome ? 'Anil Sutar' : 'Protected case study',
+      PASSWORD ? encryptHtml(html, PASSWORD) : { v: 1, locked: true },
+      notice,
+      opts
+    );
     gatedPages.push(name);
   } else {
     output = html;
@@ -428,7 +464,11 @@ console.log('[build] homepage:  /  →  public/index.html   (rendered from index
 console.log(`[build] rendered ${phpPages.length} PHP pages into public/pages/:`);
 for (const name of phpPages) {
   const label = gatedPages.includes(name)
-    ? (PASSWORD ? 'password-protected (AES-256-GCM)' : 'locked — password not configured')
+    ? (PASSWORD
+        ? /^index\.php$/i.test(name)
+          ? 'password-protected home page (AES-256-GCM, asks on every visit)'
+          : 'password-protected (AES-256-GCM)'
+        : 'locked — password not configured')
     : PUBLIC_WORK
       ? 'published (PORTFOLIO_PUBLIC_WORK)'
       : 'public';

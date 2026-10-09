@@ -7,6 +7,9 @@
 User-agent: *
 Allow: /
 
+# The password-protected home page: visitors only ever see a password prompt
+Disallow: /index.php
+
 # Password-protected case studies: visitors only ever see a password prompt
 Disallow: /bi.php
 Disallow: /dw.php
