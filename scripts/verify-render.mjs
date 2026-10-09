@@ -53,10 +53,17 @@ const runPhp = async (code) => {
 };
 
 // Seed the session exactly like a visitor who already entered the password.
+// The POST fields unlock the *stateless* gates (the home page), which check
+// the submitted password on every request instead of the session; for the
+// legacy session-based pages the POST has the same effect (it stores the very
+// password that the session already holds), so both template styles render
+// their unlocked branch.
 await runPhp(
   '<?php putenv("PORTFOLIO_PASSWORD=" . ' +
     phpQuote(password) +
-    '); session_start(); $_SESSION["password"] = getenv("PORTFOLIO_PASSWORD"); session_write_close(); echo "seeded";'
+    '); session_start(); $_SESSION["password"] = getenv("PORTFOLIO_PASSWORD");' +
+    ' $_POST["submit_pass"] = "1"; $_POST["pass"] = getenv("PORTFOLIO_PASSWORD");' +
+    ' session_write_close(); echo "seeded";'
 );
 
 let failures = 0;

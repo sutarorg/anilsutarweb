@@ -27,12 +27,12 @@ npm run build    # produce the deployable site in public/
    | Build command | `node scripts/build-vercel.mjs` |
    | Output directory | `public` |
 
-3. Add the environment variable for the protected case studies:
+3. Add the environment variable for the protected pages:
    **Project → Settings → Environment Variables**
 
    | Name | Value | Environments |
    | --- | --- | --- |
-   | `PORTFOLIO_PASSWORD` | the password you hand out with the case studies | Production, Preview, Development |
+   | `PORTFOLIO_PASSWORD` | the password for the home page and the case studies | Production, Preview, Development |
 
 4. **Deploy.** That is the whole setup.
 
@@ -50,7 +50,7 @@ vercel --prod
 
 | Variable | Purpose |
 | --- | --- |
-| `PORTFOLIO_PASSWORD` | Password that unlocks the individually protected case studies. If it is not set, those pages show a "not configured" notice instead of their content. |
+| `PORTFOLIO_PASSWORD` | Password that unlocks the home page and the individually protected case studies. If it is not set, those pages show a "not configured" notice instead of their content. |
 | `PORTFOLIO_PUBLIC_WORK` | Set to `1` to publish those protected case-study pages as plain HTML, with no password at all. |
 
 Locally, `npm run build` / `npm run dev` also read `.env` and `.env.local`
@@ -84,12 +84,18 @@ The PHP-to-HTML rendering can be checked against real PHP output with
 `npm run verify:render` (install the optional `php-wasm` package first).
 
 **2. Case-study pages can be password-protected without a server.**
-`bi.php`, `dw.php`, `mc.php`, `mi.php`, `tm.php` and `work2.php` read
-`PORTFOLIO_PASSWORD`. At build time their HTML is encrypted with
-**AES-256-GCM** (key derived from the password with PBKDF2-SHA256, 310 000
+`index.php` (the home page), `bi.php`, `dw.php`, `mc.php`, `mi.php`, `tm.php`
+and `work2.php` read `PORTFOLIO_PASSWORD`. At build time their HTML is encrypted
+with **AES-256-GCM** (key derived from the password with PBKDF2-SHA256, 310 000
 rounds) and wrapped in a small unlock page. The visitor's browser decrypts it
 with WebCrypto after the correct password is entered; the plaintext is not
 included in the deployed page files.
+
+The home page is the strict one: it **never remembers the unlock** — no
+`sessionStorage`, no cookie, nothing on the device — so every visit to `/`
+asks for the password again, and the page is locked again as soon as the
+visitor leaves. (On the PHP/IIS host the same page checks the POSTed password
+per request instead of a session, with the identical effect.)
 
 **3. `/work.php` has a separate frontend-only password page.**
 Visitors who open `/work.php` are sent to `/login.php`; entering the correct password
@@ -101,7 +107,8 @@ Do not use it to protect sensitive information.
 Notes:
 
 * A protected case-study password is remembered per browser tab
-  (`sessionStorage`), so reloading a case study does not ask again.
+  (`sessionStorage`), so reloading a case study does not ask again. The home
+  page is the exception by design: it asks on every visit and stores nothing.
 * Because the encrypted page is public, a weak password could be brute-forced
   offline — use something reasonable.
 * If the whole repository is public, remember that the *page source* is in the
@@ -153,13 +160,14 @@ Both files are generated from the pages that actually exist, by
 `scripts/lib/seo.mjs`, so a page can never be added to one and forgotten in the
 other:
 
-* **`sitemap.xml`** lists the 36 public pages — the portfolio home page (`/`) and
-  the legacy 2009 pages with their galleries — under their canonical
-  `https://anilsutar.in` URL.
-* **`robots.txt`** allows the public pages, disallows the password-gated case
-  studies (a visitor only ever sees a password prompt there) and the two
-  prototype archives those case studies are built on, and points crawlers at
-  the sitemap.
+* **`sitemap.xml`** lists the 35 public pages — the legacy 2009 pages with
+  their galleries — under their canonical `https://anilsutar.in` URL. The
+  password-protected home page (`/`) is not advertised: its unlock screen is
+  `noindex`, so a sitemap entry would only earn a Search Console warning.
+* **`robots.txt`** allows the public pages, disallows the password-protected
+  home page and case studies (a visitor only ever sees a password prompt
+  there) and the two prototype archives those case studies are built on, and
+  points crawlers at the sitemap.
 
 Both deployments get the same rules:
 
@@ -177,9 +185,10 @@ deliberately *not* in the sitemap, with the reason, so the rules can be reviewed
 without reading the code:
 
 ```
-[seo] sitemap.xml: 36 URLs for https://anilsutar.in
-[seo] robots.txt: 8 disallowed path(s)
+[seo] sitemap.xml: 35 URLs for https://anilsutar.in
+[seo] robots.txt: 9 disallowed path(s)
 [seo] not in the sitemap:
+          /  -  the home page is password-protected: visitors only ever see a password prompt
           /work.php  -  the gated work section: the visitor is signed in at /login.php (noindex)
           /work1.php  -  superseded by the password-gated /work.php; nothing on the site links to it
           /bi.php  -  password-protected case study
@@ -195,9 +204,10 @@ To change what is listed, edit the three tables at the top of
 | `ARCHIVE_DIRS` | whole folders: the case-study prototypes are also disallowed in `robots.txt`; the older-site mirror and the dead Flash e-cards are simply not advertised |
 | `WORK_GATE` | the sign-in pages of the work section — left out of the sitemap, but not disallowed: `/login.php` carries `<meta name="robots" content="noindex, nofollow">` and `/work.php` redirects to it, and `robots.txt` could not remove a page from search results anyway (it only stops crawling). |
 
-When `PORTFOLIO_PUBLIC_WORK=1` is set, the case studies lose their password and
-the build lists them in the sitemap and drops their `Disallow` rules, so the
-static deployment always describes itself correctly.
+When `PORTFOLIO_PUBLIC_WORK=1` is set, the protected pages (home page and case
+studies) lose their password and the build lists them in the sitemap and drops
+their `Disallow` rules, so the static deployment always describes itself
+correctly.
 
 `lastmod` is intentionally not written: the only date available for a page is
 its checkout time on the build machine, and a wrong `lastmod` is worse than none

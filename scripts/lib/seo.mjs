@@ -72,7 +72,7 @@ const WORK_GATE = ['work.php', 'login.php'];
  * advertise the page again.
  */
 const NOT_ADVERTISED = [
-  ['index.php', 'the home page is listed as "/"'],
+  ['index.php', 'the home page: listed as "/" when public, skipped when password-protected (see above)'],
   ['work1.php', 'superseded by the password-gated /work.php; nothing on the site links to it'],
   ['card1.html', 'Flash e-card: the page only ever held a .swf no browser can play'],
   ['404.html', 'error page, should it ever be added at the root for the PHP host'],
@@ -96,10 +96,31 @@ export function collectSitePages(root, { publicWork = false } = {}) {
   const files = entries.filter((entry) => entry.isFile()).map((entry) => entry.name);
   const notAdvertised = new Map(NOT_ADVERTISED);
 
-  // The home page first: `/` is the canonical address, `index.php` renders it.
-  const pages = [{ url: '/', file: 'index.php' }];
   const skipped = [];
   const disallow = [];
+
+  // The home page first: `/` is the canonical address, `index.php` renders it.
+  // Once the home page itself is password-protected it is left out of the
+  // sitemap like the gated case studies - the unlock screen it then serves is
+  // noindex, so a sitemap entry would only earn a Search Console warning.
+  // (robots.txt disallows the /index.php URL; `Disallow: /` would block the
+  // whole site, since robots rules match by prefix.)
+  const homeSource = fs.existsSync(path.join(root, 'index.php'))
+    ? fs.readFileSync(path.join(root, 'index.php'), 'utf8')
+    : '';
+  const pages = [];
+  if (isGatedPage(homeSource) && !publicWork) {
+    skipped.push({
+      url: '/',
+      reason: 'the home page is password-protected: visitors only ever see a password prompt',
+    });
+    disallow.push({
+      path: '/index.php',
+      reason: 'the password-protected home page: visitors only ever see a password prompt',
+    });
+  } else {
+    pages.push({ url: '/', file: 'index.php' });
+  }
 
   /** Skips a page, recording why it is not in the sitemap. */
   const skip = (name, reason) => skipped.push({ url: `/${name}`, reason });

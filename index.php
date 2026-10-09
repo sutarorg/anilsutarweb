@@ -1,3 +1,30 @@
+<?php
+// Stateless password gate for the home page.
+//
+// Unlike the case-study pages (bi.php, dw.php, ...), the correct password is
+// NOT remembered anywhere - not in $_SESSION, not in a cookie, not in the
+// visitor's browser. It is checked against the POSTed value on every request,
+// so the page locks itself again as soon as the visitor leaves: the next
+// visit always asks for the password again.
+//
+// The static (Vercel) build detects this page via PORTFOLIO_PASSWORD below and
+// wraps the HTML in its AES-256-GCM unlock screen - with remembering disabled
+// for exactly the same reason (see scripts/build-vercel.mjs).
+
+$gate_pass = (string) getenv('PORTFOLIO_PASSWORD');
+$gate_error = '';
+$gate_ok = false;
+
+if (isset($_POST['submit_pass'], $_POST['pass']) && (string) $_POST['pass'] !== '') {
+    if ($gate_pass !== '' && hash_equals($gate_pass, (string) $_POST['pass'])) {
+        $gate_ok = true; // unlocked for this response only - nothing is stored
+    } else {
+        $gate_error = 'Incorrect password. Please try again.';
+    }
+}
+
+if ($gate_ok) {
+?>
 <html>
 <head>
   <title>Anil Sutar</title>
@@ -230,3 +257,53 @@ I'm constantly exploring <strong>AI tools</strong>,
 </script>
 </body>
 </html>
+<?php
+}
+else
+{
+?>
+ <html>
+<head>
+  <title>Anil Sutar</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <link href="favicon.ico" rel="icon" type="image/x-icon" />
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/text.css">
+
+</head>
+
+<body style="overflow-x:hidden;">
+<div class="row m-0 p-0 p-lg-4">
+  <div class="container">
+    <div class="row mb-5 pb-5">
+      <div class="col-md-5 col-lg-5 col-12 mb-4 mx-auto mt-lg-5 pt-lg-5">
+          <div class="border rounded mt-5 p-4">
+            <h1 class="sfprohev blkfs18 mb-3 blgrehd">Enter Password</h1>
+            <?php if ($gate_error !== '') { ?>
+            <p class="sfprolit small" style="color: #a52a2a;"><?php echo htmlspecialchars($gate_error); ?></p>
+            <?php } ?>
+            <form method="post" action="" id="login_form" autocomplete="off">
+              <div class="form-group">
+                <input type="password" class="form-control sfprolit" name="pass" placeholder="Enter Password" autocomplete="current-password" required autofocus>
+              </div>
+              <div class="row">
+                <div class="col-md-6 col-lg-6 col-6 pt-2">
+                  <span class="sfprolit small">This page is private.</span>
+                </div>
+                <div class="col-md-6 col-lg-6 col-6 text-right">
+                  <input type="submit" name="submit_pass" class="btn btn-primary border-0 sfprohev whicol rounded px-4" style="background-color: #6678a1;" value="OK">
+                </div>
+              </div>
+            </form>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
+<?php
+}
+?>
